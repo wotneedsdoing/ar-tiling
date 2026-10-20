@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://ar-tiling.com/sitemap.xml

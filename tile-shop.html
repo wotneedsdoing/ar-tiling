@@ -1,0 +1,911 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Tile shop: buy tiles online | AR Tiling</title>
+<meta name="description" content="Buy wall and floor tiles from AR Tiling: every main type of tile in over 100 colours at real 2026 UK prices. Preview your pattern and grout, then order for delivery, collection or fitting.">
+<link rel="canonical" href="https://ar-tiling.com/tile-shop.html">
+<meta property="og:title" content="Tile shop: buy tiles online | AR Tiling">
+<meta property="og:description" content="Buy wall and floor tiles from AR Tiling: every main type of tile in over 100 colours at real 2026 UK prices. Preview your pattern and grout, then order for delivery, collection or fitting.">
+<meta property="og:type" content="website">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta property="og:image" content="https://ar-tiling.com/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anybody:wdth,wght@75..125,500..900&family=Public+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="site.css">
+<style>
+/* Tile shop: filters and cards on the left, a live preview with pricing on the right. */
+.ts-steps { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 10px; }
+.ts-steps li { display: flex; align-items: center; gap: 8px; background: var(--surface); border: 1px solid var(--grout); border-radius: 999px; padding: 6px 14px 6px 6px; font-weight: 600; font-size: .95rem; }
+.ts-steps b { display: grid; place-items: center; width: 26px; height: 26px; border-radius: 50%; background: var(--glaze); color: var(--on-glaze); font-size: .85rem; }
+.ts { padding-block: 40px 70px; }
+.ts-layout { display: grid; grid-template-columns: minmax(0, 1fr) 420px; gap: 28px; align-items: start; }
+.ts-filters { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; background: var(--surface); border: 2px solid var(--grout); border-radius: 6px; padding: 16px; align-items: end; }
+.ts-filters .wide { grid-column: span 2; }
+.ts label, .ts .legend { display: block; font: 700 .76rem var(--mono); text-transform: uppercase; letter-spacing: .05em; color: var(--muted); margin-bottom: 5px; }
+.ts select, .ts input[type="search"], .ts input[type="number"] { width: 100%; font: inherit; font-size: .95rem; color: var(--ink); background: var(--porcelain); border: 2px solid var(--grout); border-radius: 4px; padding: 9px 10px; min-height: 44px; }
+.ts-clear { font: inherit; font-weight: 700; color: var(--ink); background: none; border: 2px solid var(--grout); border-radius: 4px; min-height: 44px; cursor: pointer; }
+.ts-bar { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin: 18px 0 14px; flex-wrap: wrap; color: var(--muted); }
+.ts-bar a { font-weight: 700; }
+.ts-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 16px; }
+.ts-card { background: var(--surface); border: 2px solid var(--grout); border-radius: 6px; overflow: hidden; display: flex; flex-direction: column; min-width: 0; }
+.ts-card.on { border-color: var(--glaze); box-shadow: 0 0 22px rgba(255, 80, 32, .25); }
+.ts-sw { display: block; width: 100%; padding: 0; border: 0; background: var(--night); cursor: pointer; aspect-ratio: 8 / 5; }
+.ts-sw svg { display: block; width: 100%; height: 100%; }
+.ts-body { padding: 14px; display: flex; flex-direction: column; gap: 8px; flex: 1; }
+.ts-type { font: .72rem var(--mono); color: var(--brass); text-transform: uppercase; letter-spacing: .04em; }
+.ts-card h3 { font-size: 1.15rem; }
+.ts-dots { display: flex; flex-wrap: wrap; gap: 6px; }
+.ts-dot { width: 28px; height: 28px; border-radius: 50%; border: 2px solid var(--grout); cursor: pointer; padding: 0; }
+.ts-dot[aria-pressed="true"] { outline: 2px solid var(--ink); outline-offset: 2px; }
+.ts-cname { font-size: .9rem; color: var(--muted); }
+.ts-tags { display: flex; flex-wrap: wrap; gap: 4px; list-style: none; padding: 0; margin: 0; }
+.ts-tags li { font-size: .72rem; border: 1px solid var(--grout); border-radius: 3px; padding: 1px 6px; color: var(--muted); }
+.ts-price { font-size: .88rem; color: var(--muted); }
+.ts-price b { color: var(--ink); font: 800 1.2rem var(--display); }
+.ts-acts { display: flex; gap: 8px; margin-top: auto; padding-top: 4px; }
+.btn.sm { padding: 9px 10px; font-size: .88rem; flex: 1; min-height: 44px; }
+.ts-preview { position: sticky; top: 84px; background: var(--surface); border: 2px solid var(--grout); border-radius: 6px; padding: 18px; display: flex; flex-direction: column; gap: 14px; max-height: calc(100vh - 100px); overflow: auto; }
+.ts-preview > * { flex-shrink: 0; }
+.ts-preview h2 { font-size: 1.6rem; }
+.pv-stage { border-radius: 4px; overflow: hidden; background: var(--night); aspect-ratio: 3 / 2; perspective: 900px; }
+.pv-stage svg { width: 100%; height: 100%; display: block; transition: transform .4s; }
+.pv-stage.floor svg { transform: rotateX(50deg) scale(2.1); transform-origin: 50% 80%; overflow: visible; }
+@media (prefers-reduced-motion: reduce) { .pv-stage svg { transition: none; } }
+.pv-cap { font: .76rem var(--mono); color: var(--muted); }
+.seg { display: flex; border: 2px solid var(--grout); border-radius: 4px; overflow: hidden; }
+.seg button { flex: 1; font: inherit; font-weight: 700; padding: 8px; background: none; color: var(--ink); border: 0; cursor: pointer; min-height: 40px; }
+.seg button[aria-pressed="true"] { background: var(--glaze); color: var(--on-glaze); }
+.pv-two { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.grouts { display: flex; flex-wrap: wrap; gap: 6px; }
+.grouts button { width: 30px; height: 30px; border-radius: 4px; border: 2px solid var(--grout); cursor: pointer; padding: 0; }
+.grouts button[aria-pressed="true"] { outline: 2px solid var(--ink); outline-offset: 2px; }
+.pv-check { display: flex; gap: 8px; align-items: center; font-size: .92rem; }
+.pv-check input { width: 20px; height: 20px; accent-color: var(--glaze); }
+.est { width: 100%; border-collapse: collapse; font-size: .92rem; }
+.est td { padding: 6px 0; border-bottom: 1px solid var(--grout); vertical-align: top; }
+.est td small { display: block; color: var(--muted); font-size: .78rem; }
+.est .num { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; padding-left: 10px; }
+.est .tot td { font-weight: 800; font-size: 1.05rem; border-bottom: 0; }
+.est .save td { color: var(--fill-fg); }
+.know { margin: 0; }
+.know div { display: grid; grid-template-columns: 110px 1fr; gap: 10px; padding: 7px 0; border-bottom: 1px solid var(--grout); font-size: .9rem; }
+.know dt { color: var(--brass); font-weight: 700; font-size: .8rem; }
+.know dd { margin: 0; }
+.pv-note { font-size: .82rem; color: var(--muted); }
+.ts-status { min-height: 1.4em; font-weight: 600; color: var(--fill-fg); }
+.picks { display: grid; gap: 12px; list-style: none; padding: 0; margin: 0 0 20px; }
+.picks li { display: grid; grid-template-columns: 96px 1fr auto; gap: 14px; align-items: center; background: var(--porcelain); border: 1px solid var(--grout); border-radius: 6px; padding: 10px; }
+.picks svg { width: 96px; height: 60px; display: block; border-radius: 3px; }
+.picks small { display: block; color: var(--muted); }
+.picks .rm { background: none; border: 1px solid var(--grout); color: var(--ink); border-radius: 4px; padding: 8px 12px; cursor: pointer; font: inherit; min-height: 40px; }
+.ts-src { font-size: .85rem; color: var(--muted); columns: 2 300px; padding-left: 18px; }
+.ts-src li { break-inside: avoid; margin-bottom: 4px; }
+@media (max-width: 1040px) { .ts-layout { grid-template-columns: 1fr; } .ts-preview { position: static; max-height: none; } }
+@media (max-width: 520px) { .ts-filters .wide { grid-column: auto; } .picks li { grid-template-columns: 72px 1fr; } .picks svg { width: 72px; height: 45px; } .picks .rm { grid-column: 1 / -1; } .know div { grid-template-columns: 1fr; gap: 2px; } }
+.hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+.req { font-weight: 400; color: var(--muted); font-size: .85em; }
+.qform [aria-invalid="true"] { border-color: var(--glaze); box-shadow: 0 0 0 2px var(--glaze); }
+.sent.bad { background: rgba(255, 80, 32, .14); color: #ffb59a; }
+.sent a { color: inherit; }
+@media (max-width: 520px) { .qform .row { grid-template-columns: 1fr; } }
+</style>
+
+</head>
+<body>
+<header class="site-head">
+  <div class="wrap">
+    <a class="brand" href="./" aria-label="AR Tiling home">
+      <svg class="mark" viewBox="0 0 56.56 36.77" aria-hidden="true" focusable="false"><g transform="translate(-3.72 -6.00)"><polygon fill="#ff5020" points="32.00,6.00 3.72,34.28 12.21,42.77 40.49,14.49"/><polygon fill="#ff9a3d" points="41.90,15.90 60.28,34.28 51.79,42.77 33.41,24.39"/><polygon fill="#c8300f" points="32.00,25.83 40.00,33.83 32.00,41.83 24.00,33.83"/></g></svg>
+      <span class="brand-txt"><b><span class="ar">AR</span> TILING</b><small>Tiling specialists</small></span>
+    </a>
+    <nav class="nav" aria-label="Main">
+      <a href="./#services">Services</a>
+      <a href="tile-shop.html">Tile shop</a>
+      <a href="guides.html">Guides</a>
+      <a href="./#prices">Prices</a>
+      <a href="./#contracts">Contracts</a>
+      <a href="./#loyalty">Save 10%</a>
+      <a href="./#calculator">Calculator</a>
+      <a class="btn" href="./#quote">Free quote</a>
+    </nav>
+    <details class="menu">
+      <summary>Menu</summary>
+      <nav aria-label="Main">
+        <a href="./">Home</a>
+        <a href="tile-shop.html">Tile shop</a>
+        <a href="guides.html">Guides</a>
+        <a href="bathroom-tiling.html">Bathroom tiling</a>
+        <a href="wet-rooms-and-showers.html">Wet rooms and showers</a>
+        <a href="kitchen-tiling.html">Kitchen tiling</a>
+        <a href="floor-tiling.html">Floor tiling</a>
+        <a href="outdoor-tiling.html">Outdoor tiling and patios</a>
+        <a href="commercial-tiling.html">Commercial tiling and contracts</a>
+        <a href="./#choosing">Choosing your tiles</a>
+        <a href="./#prices">Prices</a>
+        <a href="./#loyalty">Loyal customers save 10%</a>
+        <a href="./#calculator">Calculator</a>
+        <a href="./#quote">Get a free quote</a>
+      </nav>
+    </details>
+  </div>
+</header>
+<main>
+<section class="page-hero" aria-labelledby="h1">
+  <div class="wrap">
+    <p class="crumbs"><a href="./">Home</a> / Tile shop</p>
+    <h1 id="h1">The AR Tiling <em>tile shop</em></h1>
+    <p class="lede">Buy your tiles from us. Every main type of tile sold in the UK, in the colours people actually choose, at real 2026 prices. See each one laid in your pattern and grout, add it to your basket by the square metre, and have it delivered, collected or fitted by our team.</p>
+    <ol class="ts-steps">
+      <li><b>1</b>Pick a tile and colour</li>
+      <li><b>2</b>Preview your pattern and grout</li>
+      <li><b>3</b>Add it to your basket</li>
+      <li><b>4</b>Order for delivery, collection or fitting</li>
+    </ol>
+  </div>
+</section>
+
+<section class="ts" aria-label="Tiles">
+  <div class="wrap ts-layout">
+    <div>
+      <form class="ts-filters" id="ts-filters" role="search" aria-label="Filter tiles">
+        <div class="wide"><label for="f-q">Search</label><input id="f-q" type="search" placeholder="e.g. herringbone, marble, sage, outdoor"></div>
+        <div><label for="f-room">Room</label><select id="f-room"><option value="">Any room</option></select></div>
+        <div><label for="f-type">Material</label><select id="f-type"><option value="">Any material</option></select></div>
+        <div><label for="f-look">Look</label><select id="f-look"><option value="">Any look</option></select></div>
+        <div><label for="f-col">Colour</label><select id="f-col"><option value="">Any colour</option></select></div>
+        <div><label for="f-max">Price per m²</label><select id="f-max"><option value="">Any price</option><option value="30">Up to £30</option><option value="50">Up to £50</option><option value="80">Up to £80</option><option value="150">Up to £150</option></select></div>
+        <div><label for="f-sort">Sort by</label><select id="f-sort"><option value="">Most popular</option><option value="lo">Price, low to high</option><option value="hi">Price, high to low</option><option value="az">Name, A to Z</option></select></div>
+        <button class="ts-clear" type="reset">Clear filters</button>
+      </form>
+      <div class="ts-bar"><p id="ts-count" aria-live="polite"></p><a href="#basket">Basket (<span id="bk-n">0</span>) · <span id="bk-t">£0</span></a></div>
+      <div class="ts-grid" id="ts-grid"></div>
+    </div>
+
+    <aside class="ts-preview" id="preview" aria-labelledby="pv-h" tabindex="-1">
+      <div>
+        <p class="ts-type" id="pv-type"></p>
+        <h2 id="pv-h"></h2>
+        <p class="ts-cname" id="pv-cname"></p>
+      </div>
+      <div class="pv-stage" id="pv-stage"><svg id="pv-svg" role="img"></svg></div>
+      <p class="pv-cap" id="pv-cap"></p>
+      <div>
+        <span class="legend" id="lg-col">Colour</span>
+        <div class="ts-dots" id="pv-dots" role="group" aria-labelledby="lg-col"></div>
+      </div>
+      <div class="pv-two">
+        <div><span class="legend" id="lg-view">View</span><div class="seg" role="group" aria-labelledby="lg-view"><button type="button" data-view="wall" aria-pressed="true">Wall</button><button type="button" data-view="floor" aria-pressed="false">Floor</button></div></div>
+        <div><label for="pv-pat">Pattern</label><select id="pv-pat"></select></div>
+      </div>
+      <div>
+        <span class="legend" id="lg-grout">Grout colour: <span id="pv-gname"></span></span>
+        <div class="grouts" id="pv-grouts" role="group" aria-labelledby="lg-grout"></div>
+      </div>
+      <div class="pv-two">
+        <div><label for="pv-grade">Quality</label><select id="pv-grade"></select></div>
+        <div><label for="pv-area">Area to tile (m²)</label><input id="pv-area" type="number" inputmode="decimal" min="0.5" max="2000" step="0.5" value="6"></div>
+      </div>
+      <table class="est" aria-describedby="pv-note">
+        <caption class="legend" style="text-align:left">Your price</caption>
+        <tbody id="pv-est"></tbody>
+      </table>
+      <label class="pv-check"><input type="checkbox" id="pv-loyal"> I'm a returning customer or was referred (10% off fitting)</label>
+      <div class="ts-acts"><button class="btn" type="button" id="pv-add">Add tiles to basket</button></div>
+      <p class="ts-status" id="ts-status" role="status" aria-live="polite"></p>
+      <dl class="know" id="pv-know"></dl>
+      <p class="pv-note" id="pv-note">Tile prices are per m² including VAT. The fitting estimate covers labour, adhesive, grout and trims; your fixed fitting price follows a free visit. Colours on screen are a guide, so ask for a sample before a big order.</p>
+      <a href="#ts-grid" class="pv-note">Back to the tiles</a>
+    </aside>
+  </div>
+</section>
+
+<section class="band" id="basket" aria-labelledby="bk-h">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="label">Your basket</p>
+      <h2 id="bk-h">Your tiles</h2>
+      <p class="lede">Areas include extra for cuts. We round up to full boxes and confirm stock and delivery date before you pay.</p>
+    </div>
+    <ul class="picks" id="bk-list"></ul>
+    <p class="ts-empty" id="bk-empty">Your basket is empty. Pick a tile above and choose "Add tiles to basket".</p>
+    <div class="cols" id="bk-checkout" hidden>
+      <table class="est" aria-label="Order total"><tbody id="bk-sum"></tbody></table>
+      <form class="qform" id="order-form" novalidate>
+        <div class="hp" aria-hidden="true"><label for="o-web">Leave this empty</label><input id="o-web" name="website" tabindex="-1" autocomplete="off"></div>
+        <div class="field"><label for="o-how">How would you like your tiles?</label>
+          <select id="o-how" name="delivery"></select></div>
+        <div class="row">
+          <div class="field"><label for="o-name">Your name <span class="req">(required)</span></label><input id="o-name" name="name" autocomplete="name"></div>
+          <div class="field"><label for="o-phone">Phone <span class="req">(required)</span></label><input id="o-phone" name="phone" type="tel" autocomplete="tel"></div>
+        </div>
+        <div class="row">
+          <div class="field"><label for="o-email">Email <span class="req">(required)</span></label><input id="o-email" name="email" type="email" autocomplete="email"></div>
+          <div class="field"><label for="o-post">Postcode <span class="req">(required)</span></label><input id="o-post" name="postcode" autocomplete="postal-code"></div>
+        </div>
+        <div class="field"><label for="o-addr">Delivery address</label><textarea id="o-addr" name="address" autocomplete="street-address" rows="2"></textarea></div>
+        <div class="field"><label for="o-msg">Anything else?</label><textarea id="o-msg" name="message" rows="2" placeholder="e.g. delivery days, access, sizes of the room"></textarea></div>
+        <button class="btn" type="submit">Place order: nothing is charged yet</button>
+        <p class="sent" id="o-sent" role="status" aria-live="polite" hidden></p>
+        <p class="pv-note">We check stock, confirm your delivery date and send a secure payment link by email, usually within one working day. Your order is only confirmed once paid.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<section aria-labelledby="buy-h">
+  <div class="wrap cols">
+    <div class="prose">
+      <p class="label">Buying tiles from us</p>
+      <h2 id="buy-h">Good to know</h2>
+      <ul class="list-check">
+        <li><span><b>Supply and fit:</b> buy your tiles with your fitting and we deliver them with the job, checked for batch and shade before a single tile goes on.</span></li>
+        <li><span><b>Delivery or collection:</b> collection is free; delivery prices are shown at checkout. Tiles arrive on a pallet or in boxes, so please check every box before signing.</span></li>
+        <li><span><b>Extra for cuts:</b> we add 10% (15% for herringbone and diagonal). Keep a few spares for future repairs.</span></li>
+        <li><span><b>Returns:</b> as an online customer you can cancel within 14 days of delivery. Full, unopened boxes can be returned in their original condition; tiles cut or ordered specially for you can't. <span class="fill">[AR Tiling: confirm returns address and who pays return delivery]</span></span></li>
+        <li><span><b>Samples:</b> ask for a sample before a large order. <span class="fill">[Sample price, e.g. £3 each, refunded on order]</span></span></li>
+      </ul>
+    </div>
+    <div class="prose">
+      <p class="label">Where our prices come from</p>
+      <h2>Real 2026 prices</h2>
+      <p>Each tile has three qualities. The Value and Premium prices are the lowest and highest prices we found for that type of tile at UK tile shops in October 2026, including VAT; Standard sits between them. Prices change and sales are common, so your order is confirmed at the price shown on your payment link.</p>
+      <p class="fill">[AR Tiling: set your own selling prices in the PRICES list at the top of the shop script]</p>
+      <ul class="ts-src" id="ts-src"></ul>
+    </div>
+  </div>
+</section>
+
+<script>
+(function () {
+  "use strict";
+
+  // Order settings. SEND_TO / FORM_ENDPOINT work as on the quote form.
+  var SEND_TO = "";       // e.g. "info@ar-tiling.com"
+  var FORM_ENDPOINT = ""; // e.g. "https://formspree.io/f/abcdwxyz"
+  var DELIVERY = [ // [label, price in £]
+    ["Supply and fit: deliver with my tiling job", 0],
+    ["Collect from AR Tiling (free)", 0],
+    ["Delivery in Greater Manchester", 35],
+    ["Delivery elsewhere in mainland UK (pallet)", 65]
+  ];
+
+  var ROOMS = { wall: "Bathroom walls", shower: "Showers and wet rooms", kitchen: "Kitchens", floor: "Indoor floors", outdoor: "Outdoor", commercial: "Commercial" };
+  var FAMS = { white: "White", cream: "Cream and beige", grey: "Grey", black: "Black", blue: "Blue", green: "Green", pink: "Pink", red: "Red and terracotta", wood: "Wood tones", gold: "Gold and yellow", multi: "Mixed and patterned" };
+  var PATTERNS = {
+    straight: ["Straight lay", 0.10, 0], brick: ["Brick bond (half offset)", 0.10, 0], third: ["Third offset", 0.10, 0],
+    vertical: ["Vertical stack", 0.10, 0], herringbone: ["Herringbone", 0.15, 0.30], diagonal: ["Diagonal", 0.15, 0.20], honeycomb: ["Honeycomb", 0.12, 0]
+  };
+  var GROUTS = [["Bright white", "#f5f5f2"], ["Ivory", "#e9dfc9"], ["Silver grey", "#b8b9b6"], ["Mid grey", "#88898a"], ["Anthracite", "#454647"], ["Black", "#1c1c1d"], ["Sand", "#c7b08a"]];
+  var SUNDRIES = [10, 20]; // adhesive, grout and trims per m², as on the home page calculator
+  var SRC = {
+    topps: ["Topps Tiles, metro range", "https://www.toppstiles.co.uk/metro"],
+    tm: ["Tile Mountain, 600 × 600 tiles", "https://www.tilemountain.co.uk/600x600-tiles"],
+    wf: ["Walls and Floors, 600 × 600 tiles", "https://www.wallsandfloors.co.uk/600x600-tiles"],
+    wickes: ["Wickes, Atlantis Calacatta 1200 × 600", "https://www.wickes.co.uk/Wickes-Atlantis-Calacatta-Polished-Porcelain-Wall+Floor-Tile---1200-x-600mm/p/317406"],
+    ctd: ["CTD Tiles, Marmori Calacatta 1200 × 600", "https://www.ctdtiles.co.uk/product/marmori-calacatta-white-polished-tile-1200x600mm"],
+    studio: ["Studio Tiles, wood effect", "https://www.studiotiles.co.uk/range-category/wood-effect/"],
+    total: ["Total Tiles, oak plank", "https://totaltiles.co.uk/classic-oak-plank-wood-effect-porcelain-floor-tile.html"],
+    kitkat: ["My Stone Floor, kit-kat tiles", "https://mystonefloor.com/collections/kit-kat-tiles"],
+    otto: ["Otto Tiles, zellige", "https://www.ottotiles.co.uk/collections/zellige-tiles"],
+    glass: ["Stone Tile Company, glass mosaics", "https://www.stonetilecompany.co.uk/mosaic-tiles/material/glass-mosaic-tiles"],
+    hex: ["Hyperion Tiles, hexagon tiles", "https://www.hyperiontiles.co.uk/collections/hexagon-tiles?page=2"],
+    vic: ["Studio Tiles, Victorian floors", "https://www.studiotiles.co.uk/store/victorian-floors/plain-colours/victorian-red/"],
+    vic2: ["Hyperion Tiles, Original Style Victorian", "https://www.hyperiontiles.co.uk/collections/original-style-victorian-floor-tiles?page=5"],
+    terr: ["Victorian Plumbing, Grantola terrazzo effect", "https://www.victorianplumbing.co.uk/grantola-white-terrazzo-effect-tiles-600-x-600mm"],
+    terr2: ["My Stone Floor, terrazzo effect", "https://mystonefloor.com/terrazzo-effect-porcelain"],
+    enc: ["Victorian Plumbing, Fleetwood patterned", "https://www.victorianplumbing.co.uk/fleetwood-patterned-wall-floor-tiles-200-x-200mm"],
+    slab: ["Tile Experience, large slabs", "https://www.tileexperience.co.uk/large-slabs"],
+    trav: ["Travertine Tiles UK, natural stone", "https://www.travertinetilesuk.com/stone-tiles.html"],
+    topps2: ["Topps Tiles, natural stone", "https://www.toppstiles.co.uk/natural-stone"],
+    calc: ["Tile Calculator UK, cost guide", "https://tilecalculator.co.uk/tile-cost-estimator.html"],
+    quarry: ["NC Tiles, red quarry tile", "https://www.nctilesandbathrooms.com/quarry-tile-red-150x150x12mm/p/28075"],
+    quarry2: ["CTD Tiles, quarry tile", "https://www.ctdtiles.co.uk/product/quarry-brown-flat-tile-150x150mm"],
+    terra: ["Blackman Rowe, handmade terracotta", "https://blackmanrowe.co.uk/products/red-handmade-terracotta-floor-tiles-200x200x20mm"],
+    pave: ["Universal Paving, 20 mm porcelain", "https://universalpaving.co.uk/blogs/universal-paving/porcelain-paving-cost-and-uk-installation-guide-2026"],
+    pave2: ["Stone Paving Direct, 20 mm porcelain", "https://www.stonepavingdirect.co.uk/collections/porcelain-paving/thickness_20mm"]
+  };
+
+  // Every tile style. w × h in mm (sheet size for mosaics), p = [lowest, highest] UK shop price per m² inc VAT,
+  // lab = AR Tiling fitting guide per m². Colours: n name, c base, v vein or pattern colour, f filter family.
+  var C = function (n, c, f, extra) { var o = { n: n, c: c, f: f }; for (var k in extra || {}) o[k] = extra[k]; return o; };
+  var TILES = [
+    { id: "metro-gloss", name: "Metro tile, bevelled gloss", type: "Ceramic", look: "Plain", w: 200, h: 100, fin: "Gloss", fx: ["bevel", "gloss"], p: [15, 32], lab: [25, 40], j: 2, rooms: ["wall", "shower", "kitchen", "commercial"], pat: "brick", g: 0, src: ["topps"],
+      cols: [C("White", "#f3f1ec", "white"), C("Bone", "#e6dccb", "cream"), C("Grey", "#a9aaa7", "grey"), C("Black", "#1e1e1f", "black"), C("Blush", "#e7c3b5", "pink"), C("Forest", "#2f4a3b", "green"), C("Deep blue", "#1f3150", "blue")],
+      slip: "Wall tile only: too slippery for floors.", adh: "Ready-mixed or cement-based wall adhesive.", care: "pH-neutral cleaner. Squeegee shower walls so gloss stays spotless.",
+      pro: "Bevelled edges show any wobble, so we set out from a laser line and finish corners with neat trims or mitres." },
+    { id: "metro-matt", name: "Metro tile, flat matt", type: "Ceramic", look: "Plain", w: 200, h: 100, fin: "Matt", fx: [], p: [15, 32], lab: [25, 40], j: 2, rooms: ["wall", "shower", "kitchen", "commercial"], pat: "brick", g: 0, src: ["topps"],
+      cols: [C("White", "#efeeea", "white"), C("Dove grey", "#c3c2bd", "grey"), C("Sage", "#a3b39c", "green"), C("Charcoal", "#3a3b3c", "black"), C("Clay", "#c48a6a", "red")],
+      slip: "Wall tile.", adh: "Ready-mixed or cement-based wall adhesive.", care: "pH-neutral cleaner. Matt hides water marks.",
+      pro: "Flat metro looks great in herringbone or vertical stack. We cut and set out the pattern so it's centred on your window or niche." },
+    { id: "kitkat", name: "Finger mosaic (kit-kat)", type: "Mosaic", look: "Plain", w: 286, h: 294, fin: "Gloss or matt", fx: ["fingers"], chip: [20, 145], p: [56, 108], lab: [40, 70], j: 2, rooms: ["wall", "shower", "kitchen"], pats: ["straight"], g: 0, src: ["kitkat"],
+      cols: [C("White", "#f1efe9", "white"), C("Sage", "#9db39a", "green"), C("Teal", "#3f8f8a", "blue"), C("Terracotta", "#b86a48", "red"), C("Midnight", "#232b3c", "blue"), C("Blush", "#e3bfb2", "pink")],
+      slip: "Walls and shower walls.", adh: "White cement-based adhesive, combed flat.", care: "pH-neutral cleaner; seal cement grout in showers.",
+      pro: "Sheets must line up so the joins between sheets vanish. We beat each sheet in flat and grout in two passes." },
+    { id: "zellige", name: "Zellige, handmade (Moroccan)", type: "Handmade", look: "Handmade", w: 100, h: 100, fin: "Glossy, uneven", fx: ["zellige", "gloss"], p: [128, 320], lab: [45, 70], j: 1.5, rooms: ["wall", "shower", "kitchen"], pats: ["straight", "diagonal"], g: 1, src: ["otto"],
+      cols: [C("Snow white", "#eee8dc", "white"), C("Sea green", "#5e9a89", "green"), C("Cobalt", "#2c4e8e", "blue"), C("Terracotta", "#bf6648", "red"), C("Ochre", "#c99a3c", "gold"), C("Rose", "#ddb0a5", "pink")],
+      slip: "Walls only.", adh: "Cement-based adhesive, back-buttered tile by tile.", care: "Seal the unglazed edges before grouting. Chips and colour changes are part of the charm.",
+      pro: "Every tile is a different thickness. We set each one by eye so the wall shimmers without sharp edges." },
+    { id: "zellige-effect", name: "Zellige-effect ceramic", type: "Ceramic", look: "Handmade", w: 130, h: 130, fin: "Gloss, rippled", fx: ["zellige", "gloss"], p: [30, 70], lab: [30, 45], j: 2, rooms: ["wall", "shower", "kitchen"], pats: ["straight", "diagonal"], g: 0, src: ["glass"], approx: true,
+      cols: [C("White", "#eee9df", "white"), C("Sage", "#9fb59e", "green"), C("Blue", "#3d5f97", "blue"), C("Pink", "#e0b6aa", "pink"), C("Mustard", "#cfa23f", "gold")],
+      slip: "Walls only.", adh: "Cement-based wall adhesive.", care: "pH-neutral cleaner.",
+      pro: "The handmade look without the handmade price, and flatter, so it's quicker to fit." },
+    { id: "hex", name: "Hexagon porcelain", type: "Porcelain", look: "Plain", w: 230, h: 200, fin: "Matt", fx: ["hex"], p: [30, 100], lab: [35, 55], j: 2, rooms: ["floor", "wall", "shower", "kitchen"], pats: ["honeycomb"], g: 2, src: ["hex"],
+      cols: [C("White", "#ecebe7", "white"), C("Warm grey", "#b3aea6", "grey"), C("Black", "#222222", "black"), C("Sage", "#9fb09a", "green"), C("Terracotta", "#b8694a", "red"), C("Terrazzo", "#e9e5de", "multi", { fx: ["hex", "terrazzo"], chips: ["#9c9a96", "#2d2d2d", "#c98f6b"], look: "Terrazzo" })],
+      slip: "R10 matt: fine for bathroom and kitchen floors.", ufh: true, adh: "Flexible cement-based (C2) adhesive.", care: "pH-neutral cleaner.",
+      pro: "Hexagons need careful half-tile cuts at every edge. We plan the layout so you never get thin slivers by the door." },
+    { id: "plain600", name: "Plain porcelain 600 × 600, matt", type: "Porcelain", look: "Plain", w: 600, h: 600, fin: "Matt", fx: ["fleck"], p: [15, 45], lab: [25, 45], j: 2, rooms: ["floor", "wall", "shower", "kitchen", "commercial"], pats: ["straight", "brick", "diagonal"], g: 2, src: ["tm", "wf"],
+      cols: [C("Bright white", "#ececea", "white"), C("Light grey", "#c8c7c3", "grey"), C("Mid grey", "#8e8d89", "grey"), C("Anthracite", "#3b3b3b", "black"), C("Sand", "#d4c4a6", "cream"), C("Black", "#1e1e1f", "black")],
+      slip: "R10 matt suits bathroom and kitchen floors; ask for R11 in wet rooms.", ufh: true, adh: "Flexible cement-based (C2) adhesive.", care: "pH-neutral cleaner. Hard-wearing and almost waterproof.",
+      pro: "We check the floor is flat to 3 mm over 2 m and level it first if not, so big tiles sit without lips." },
+    { id: "rect", name: "Porcelain 600 × 300", type: "Porcelain", look: "Plain", w: 600, h: 300, fin: "Matt", fx: ["fleck"], p: [15, 40], lab: [25, 45], j: 2, rooms: ["floor", "wall", "shower", "kitchen", "commercial"], pats: ["third", "straight", "vertical", "herringbone"], g: 2, src: ["tm", "wf"],
+      cols: [C("Bright white", "#ececea", "white"), C("Light grey", "#c8c7c3", "grey"), C("Mid grey", "#8e8d89", "grey"), C("Anthracite", "#3b3b3b", "black"), C("Taupe", "#9b8d7e", "cream")],
+      slip: "R10 matt for floors.", ufh: true, adh: "Flexible cement-based (C2) adhesive.", care: "pH-neutral cleaner.",
+      pro: "Long tiles bow slightly in the middle, so we lay them a third offset (never half) to keep the surface flat." },
+    { id: "marble-pol", name: "Marble-effect porcelain, polished 1200 × 600", type: "Porcelain", look: "Marble", w: 1200, h: 600, fin: "Polished", fx: ["marble", "gloss"], p: [20, 61], lab: [35, 55], j: 2, rooms: ["wall", "shower", "kitchen", "floor", "commercial"], pats: ["straight", "third", "vertical"], g: 0, src: ["wickes", "ctd", "tm"],
+      cols: [C("Calacatta", "#f3efe7", "white", { v: "#b7975f" }), C("Carrara", "#ebedee", "white", { v: "#8f969c" }), C("Statuario", "#f6f5f2", "white", { v: "#6e6e6e" }), C("Nero Marquina", "#1c1c1e", "black", { v: "#e3e3e3" }), C("Emperador", "#5a4131", "wood", { v: "#cbb497" }), C("Verde", "#1f3a30", "green", { v: "#cfd8cf" })],
+      slip: "Polished is for walls; choose the matt version (R10) for floors.", ufh: true, adh: "Large-format flexible (C2S1) adhesive with levelling clips.", care: "pH-neutral cleaner; polished tiles show smears, so dry with a microfibre cloth.",
+      pro: "Big polished tiles show every lip. We back-butter every tile and use levelling clips so the surface is flat as glass." },
+    { id: "wood", name: "Wood-effect porcelain plank", type: "Porcelain", look: "Wood", w: 1200, h: 200, fin: "Matt", fx: ["wood"], p: [17, 85], lab: [30, 50], j: 2, rooms: ["floor", "kitchen", "shower", "commercial"], pats: ["third", "brick", "straight", "herringbone"], g: 3, src: ["studio", "total"],
+      cols: [C("Light oak", "#caa97c", "wood"), C("Natural oak", "#a87a4e", "wood"), C("Grey oak", "#9b958b", "grey"), C("Smoked oak", "#6a4a33", "wood"), C("Walnut", "#573826", "wood"), C("White-washed", "#ddd2c2", "cream")],
+      slip: "R10 to R11: safe in bathrooms and kitchens.", ufh: true, adh: "Flexible cement-based (C2) adhesive.", care: "pH-neutral cleaner. No sanding, oiling or warping, ever.",
+      pro: "Planks look best in a random third offset or herringbone. We mix boxes as we go so the grain never repeats." },
+    { id: "concrete", name: "Concrete-effect porcelain", type: "Porcelain", look: "Concrete", w: 600, h: 600, fin: "Matt", fx: ["speckle"], p: [15, 40], lab: [25, 45], j: 2, rooms: ["floor", "wall", "shower", "kitchen", "commercial"], pats: ["straight", "brick", "diagonal"], g: 3, src: ["tm", "wf"],
+      cols: [C("Pearl", "#d2cdc5", "grey"), C("Cement", "#a6a39d", "grey"), C("Graphite", "#555452", "black"), C("Taupe", "#9a8f83", "cream")],
+      slip: "R10 to R11.", ufh: true, adh: "Flexible cement-based (C2) adhesive.", care: "pH-neutral cleaner.",
+      pro: "The industrial look without real concrete's cracks. We match grout to the tile so the floor reads as one surface." },
+    { id: "stone-effect", name: "Stone-effect porcelain (limestone look)", type: "Porcelain", look: "Stone", w: 600, h: 600, fin: "Matt", fx: ["stone"], p: [16, 36], lab: [25, 45], j: 2, rooms: ["floor", "wall", "shower", "kitchen", "commercial"], pats: ["straight", "brick", "diagonal"], g: 1, src: ["tm", "wf"],
+      cols: [C("Ivory", "#e8e0cf", "cream"), C("Beige", "#d6c9ae", "cream"), C("Grey", "#aaa59c", "grey"), C("Dark grey", "#66635e", "black")],
+      slip: "R10; anti-slip R11 versions for wet rooms.", ufh: true, adh: "Flexible cement-based (C2) adhesive.", care: "pH-neutral cleaner. No sealing needed, unlike real stone.",
+      pro: "All the warmth of limestone with none of the sealing. Perfect for busy family kitchens." },
+    { id: "terrazzo", name: "Terrazzo-effect porcelain", type: "Porcelain", look: "Terrazzo", w: 600, h: 600, fin: "Matt", fx: ["terrazzo"], p: [27, 70], lab: [25, 45], j: 2, rooms: ["floor", "wall", "shower", "kitchen", "commercial"], pats: ["straight", "brick"], g: 0, src: ["terr", "terr2"],
+      cols: [C("White", "#ece8e1", "white", { chips: ["#9c9a96", "#2d2d2d", "#c98f6b"] }), C("Pink", "#ecd2c7", "pink", { chips: ["#b56e58", "#f6efe8", "#8b8b8b"] }), C("Grey", "#b9b6b0", "grey", { chips: ["#f0eee9", "#3a3a3a", "#8f8a82"] }), C("Green", "#cdd6c8", "green", { chips: ["#6f8a74", "#f4f1ea", "#2f3b32"] })],
+      slip: "R10.", ufh: true, adh: "Flexible cement-based (C2) adhesive.", care: "pH-neutral cleaner.",
+      pro: "Terrazzo shows the grout lines, so we use thin 2 mm joints in a matching colour for a near-seamless floor." },
+    { id: "encaustic", name: "Patterned porcelain (encaustic effect)", type: "Porcelain", look: "Patterned", w: 200, h: 200, fin: "Matt", fx: ["encaustic"], p: [26, 54], lab: [30, 50], j: 2, rooms: ["floor", "wall", "kitchen"], pats: ["straight"], g: 0, src: ["enc"],
+      cols: [C("Blue and white", "#f1eee6", "blue", { v: "#2f4f7f" }), C("Black and white", "#efede8", "black", { v: "#232323" }), C("Terracotta and cream", "#efe6d6", "red", { v: "#b5603f" }), C("Green and cream", "#efe9dc", "green", { v: "#3f6b55" }), C("Grey mix", "#d9d7d2", "grey", { v: "#5f6268" })],
+      slip: "R10 matt: good for hallways, kitchens and bathrooms.", ufh: true, adh: "Flexible cement-based (C2) adhesive.", care: "pH-neutral cleaner. Unlike real encaustic, no sealing needed.",
+      pro: "Patterns must meet perfectly at every joint. We dry-lay the whole floor first and centre the design on the room." },
+    { id: "victorian", name: "Victorian geometric floor", type: "Ceramic", look: "Patterned", w: 100, h: 100, fin: "Matt, vitreous", fx: ["victorian"], p: [155, 300], lab: [60, 100], j: 2, rooms: ["floor"], pats: ["straight"], g: 3, src: ["vic", "vic2"],
+      cols: [C("Classic red, black and white", "#f0ece4", "multi", { v: "#9c3a26", k: "#1f1f1f" }), C("Grey and white", "#efede8", "grey", { v: "#77797b", k: "#2a2a2a" }), C("Blue and white", "#efede8", "blue", { v: "#2f4b72", k: "#b9b4a8" })],
+      slip: "Matt and hard-wearing: made for hallways.", ufh: true, adh: "Rapid-set flexible adhesive on a flat, primed base.", care: "Seal once after fitting; then pH-neutral cleaner.",
+      pro: "Hundreds of small pieces and a border. Our most skilled job, and one of our favourites: we lay it piece by piece from the centre." },
+    { id: "glass", name: "Glass mosaic", type: "Mosaic", look: "Plain", w: 300, h: 300, fin: "Gloss glass", fx: ["mosaic"], chip: [23, 23], p: [55, 180], lab: [40, 70], j: 2, rooms: ["wall", "shower", "kitchen"], pats: ["straight"], g: 0, src: ["glass"],
+      cols: [C("Aqua blend", "#4fb3c0", "blue", { mix: ["#4fb3c0", "#7fcad3", "#2f8fa3", "#a9dde2"] }), C("Silver blend", "#b7bcc2", "grey", { mix: ["#b7bcc2", "#8f959c", "#d6d9dc", "#6e747b"] }), C("Black", "#1c1c1f", "black", { mix: ["#1c1c1f", "#2a2a2e", "#141416"] }), C("Gold", "#c7a250", "gold", { mix: ["#c7a250", "#ad8a3c", "#dcbf74"] }), C("Ocean blue", "#2a6f8f", "blue", { mix: ["#2a6f8f", "#1d4f6e", "#3d8fb0", "#7ab6cc"] }), C("Green blend", "#4f8a5b", "green", { mix: ["#4f8a5b", "#6fa577", "#2f6b44", "#9cc4a2"] })],
+      slip: "Walls and shower walls.", adh: "White adhesive: it shows through the glass.", care: "pH-neutral cleaner; no scourers.",
+      pro: "Glass shows the adhesive behind it, so we use white adhesive, comb it dead flat and grout with a soft float." },
+    { id: "slab", name: "Large-format porcelain slab 2400 × 1200", type: "Porcelain", look: "Marble", w: 2400, h: 1200, fin: "Polished or matt", fx: ["marble", "gloss"], p: [170, 222], lab: [60, 100], j: 1.5, rooms: ["wall", "shower", "kitchen", "floor", "commercial"], pats: ["straight", "vertical"], g: 0, src: ["slab"],
+      cols: [C("Calacatta", "#f3efe7", "white", { v: "#b7975f" }), C("Statuario", "#f6f5f2", "white", { v: "#6e6e6e" }), C("Onyx ivory", "#efe4cf", "cream", { v: "#c9a86f" }), C("Emerald", "#1e4a3c", "green", { v: "#d7e3dc" }), C("Concrete grey", "#a3a09a", "grey", { fx: ["speckle"], look: "Concrete" })],
+      slip: "Polished on walls; matt versions for floors.", ufh: true, adh: "Large-format flexible (C2S1) adhesive, full coverage.", care: "pH-neutral cleaner.",
+      pro: "Slabs weigh up to 40 kg and need two fitters, a lifting frame and a dead-flat wall. Our team is equipped for it: no job too difficult." },
+    { id: "slate", name: "Natural slate, riven", type: "Natural stone", look: "Stone", w: 600, h: 300, fin: "Riven", fx: ["slate"], p: [24, 50], lab: [40, 65], j: 3, rooms: ["floor", "kitchen", "wall", "outdoor"], pats: ["third", "straight", "brick"], g: 4, seal: true, src: ["trav", "calc"],
+      cols: [C("Black", "#2e3033", "black"), C("Grey-green", "#555a52", "green"), C("Multicolour", "#5c5045", "multi")],
+      slip: "Naturally grippy riven face.", ufh: true, adh: "Flexible adhesive; riven backs need a thicker bed.", care: "Seal before grouting and every 1 to 2 years. pH-neutral cleaner only.",
+      pro: "Riven slate varies in thickness. We sort and bed every piece so the floor is even underfoot." },
+    { id: "limestone", name: "Natural limestone, honed", type: "Natural stone", look: "Stone", w: 610, h: 406, fin: "Honed", fx: ["stone"], p: [35, 80], lab: [40, 65], j: 2, rooms: ["floor", "wall", "kitchen", "shower"], pats: ["third", "straight", "brick"], g: 1, seal: true, src: ["calc"],
+      cols: [C("Cream", "#e2d6be", "cream"), C("Blue-grey", "#8f9496", "grey"), C("Grey", "#b9b5ac", "grey")],
+      slip: "Honed: fine indoors; tumbled versions grip better.", ufh: true, adh: "White, flexible, rapid-set adhesive (stops staining).", care: "Seal before grouting and every 1 to 2 years. No acid or vinegar cleaners.",
+      pro: "Light stone can stain from grey adhesive, so we only use white rapid-set adhesive and seal before grouting." },
+    { id: "travertine", name: "Travertine, honed and filled", type: "Natural stone", look: "Stone", w: 610, h: 406, fin: "Honed and filled", fx: ["travertine"], p: [22, 64], lab: [40, 65], j: 2, rooms: ["floor", "wall", "kitchen", "shower"], pats: ["third", "straight", "brick"], g: 1, seal: true, src: ["trav", "topps2"],
+      cols: [C("Classic", "#dcc6a6", "cream"), C("Silver", "#c9c4ba", "grey"), C("Walnut", "#a47c58", "wood"), C("Ivory", "#e8dcc8", "cream")],
+      slip: "Honed: fine indoors.", ufh: true, adh: "White, flexible, rapid-set adhesive.", care: "Seal before grouting and every 1 to 2 years. No acid cleaners.",
+      pro: "We check the filled holes on every tile and re-fill any that open up before sealing." },
+    { id: "marble", name: "Natural marble", type: "Natural stone", look: "Marble", w: 610, h: 305, fin: "Honed or polished", fx: ["marble"], p: [37, 167], lab: [40, 65], j: 2, rooms: ["wall", "floor", "shower", "kitchen"], pats: ["straight", "third", "herringbone"], g: 0, seal: true, src: ["trav", "topps2"],
+      cols: [C("Carrara", "#e9ebec", "white", { v: "#8b9298" }), C("Calacatta", "#f2eee6", "white", { v: "#b0905a" }), C("Nero Marquina", "#1d1d1f", "black", { v: "#dedede" }), C("Emperador", "#5c4333", "wood", { v: "#c8b192" }), C("Verde Guatemala", "#1d3b2f", "green", { v: "#a9c3b2" })],
+      slip: "Honed for floors; polished for walls.", ufh: true, adh: "White, rapid-set, flexible adhesive.", care: "Seal and reseal yearly. Never use acid, vinegar or limescale removers.",
+      pro: "Marble marks easily, so we protect it while fitting, seal it twice and leave you the right cleaner." },
+    { id: "quarry", name: "Quarry tiles", type: "Clay", look: "Plain", w: 150, h: 150, fin: "Unglazed", fx: ["clay"], p: [40, 73], lab: [30, 50], j: 4, rooms: ["floor", "kitchen", "commercial"], pats: ["straight", "brick", "diagonal"], g: 4, src: ["quarry", "quarry2"],
+      cols: [C("Red", "#9e3b26", "red"), C("Heather brown", "#7a4a39", "wood"), C("Black", "#2a2523", "black"), C("Buff", "#c39a6b", "cream")],
+      slip: "Naturally grippy: kitchens, utilities and porches.", adh: "Cement-based adhesive or a traditional bed.", care: "Sweep and mop; can be oiled for a deeper colour.",
+      pro: "Perfect for period homes. We can match and repair old quarry floors as well as lay new ones." },
+    { id: "terracotta", name: "Terracotta, handmade", type: "Clay", look: "Handmade", w: 200, h: 200, fin: "Unglazed, handmade", fx: ["clay"], p: [57, 80], lab: [40, 65], j: 6, rooms: ["floor", "kitchen"], pats: ["straight", "brick", "diagonal"], g: 6, seal: true, src: ["terra"], note: "Reclaimed terracotta costs about £128 to £245 per m².",
+      cols: [C("Natural", "#c46a42", "red"), C("Antique", "#a65b3a", "red"), C("Pale", "#d39a72", "cream")],
+      slip: "Grippy when sealed with a matt sealer.", ufh: true, adh: "Flexible adhesive, back-buttered.", care: "Seal before grouting, then wax or reseal as it wears.",
+      pro: "Handmade tiles vary in size, so we use wide joints and lay them by eye for that farmhouse look." },
+    { id: "outdoor", name: "Outdoor porcelain paving, 20 mm", type: "Porcelain", look: "Stone", w: 900, h: 600, fin: "Textured, R11", fx: ["stone"], p: [19, 35], lab: [40, 70], j: 5, rooms: ["outdoor", "commercial"], pats: ["straight", "third", "brick"], g: 3, frost: true, src: ["pave", "pave2"],
+      cols: [C("Kandla grey", "#8f8c86", "grey"), C("Sandstone", "#c9b08b", "cream"), C("Anthracite", "#4a4a4a", "black", { fx: ["speckle"], look: "Concrete" }), C("Light grey", "#b7b5b0", "grey", { fx: ["speckle"], look: "Concrete" }), C("Oak", "#a07a52", "wood", { fx: ["wood"], look: "Wood" })],
+      slip: "R11 anti-slip, frost-proof.", adh: "Full mortar bed with slurry primer on every slab.", care: "Brush and patio-clean; no sealing needed.",
+      pro: "We lay on a full bed with primer, never dot-and-dab, so slabs never rock or crack. Groundwork is priced on your fitting quote." }
+  ];
+  TILES.forEach(function (t, i) { t.rank = i; });
+
+  // Quality grades: the lowest and highest shop prices found, and the middle.
+  function grades(t) {
+    var mid = Math.round((t.p[0] + t.p[1]) / 2);
+    return [["Value", t.p[0]], ["Standard", mid], ["Premium", t.p[1]]];
+  }
+
+  // ---------- drawing ----------
+  var NS = "http://www.w3.org/2000/svg", uid = 0;
+  function el(tag, a, parent) { var e = document.createElementNS(NS, tag); for (var k in a) e.setAttribute(k, a[k]); if (parent) parent.appendChild(e); return e; }
+  function rng(seed) { return function () { seed = (seed + 0x6D2B79F5) | 0; var t = Math.imul(seed ^ (seed >>> 15), 1 | seed); t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t; return ((t ^ (t >>> 14)) >>> 0) / 4294967296; }; }
+  function shade(hex, amt) {
+    var n = parseInt(hex.slice(1), 16), c = [n >> 16, (n >> 8) & 255, n & 255], f = amt < 0 ? 0 : 255, p = Math.min(1, Math.abs(amt));
+    c = c.map(function (v) { return Math.round(v + (f - v) * p); });
+    return "#" + ((1 << 24) | (c[0] << 16) | (c[1] << 8) | c[2]).toString(16).slice(1);
+  }
+  function has(fx, k) { return fx.indexOf(k) > -1; }
+  function fxOf(t, col) { return col.fx || t.fx; }
+
+  function layout(pat, tw, th, W, H) {
+    var out = [], x, y, k;
+    if (pat === "vertical") { var s = tw; tw = th; th = s; pat = "straight"; }
+    if (pat === "herringbone") {
+      var L = tw, S = th;
+      for (var st = -Math.ceil(H / L) - 2; st <= Math.ceil(W / L) + 2; st++) {
+        var n0 = Math.ceil(Math.max((-2 * L - st * L) / S, (-2 * L + st * L) / S)), n1 = Math.floor(Math.min((W - st * L) / S, (H + st * L) / S));
+        for (var n = n0; n <= n1; n++) { x = n * S + st * L; y = n * S - st * L; out.push({ x: x, y: y, w: L, h: S }, { x: x, y: y + S, w: S, h: L }); }
+      }
+      return out.filter(function (r) { return r.x < W && r.y < H && r.x + r.w > 0 && r.y + r.h > 0; });
+    }
+    for (k = 0, y = 0; y < H; y += th, k++) {
+      var off = pat === "brick" ? (k % 2) * tw / 2 : pat === "third" ? ((k % 3) * tw) / 3 : 0;
+      for (x = -off; x < W; x += tw) if (x + tw > 0) out.push({ x: x, y: y, w: tw, h: th });
+    }
+    return out;
+  }
+
+  function mosaicPattern(defs, t, col, scale, r) {
+    var id = "mz" + (++uid), j = t.j * scale, cw = t.chip[0] * scale, ch = t.chip[1] * scale;
+    var cols = col.mix || [col.c, shade(col.c, 0.08), shade(col.c, -0.08)];
+    var nx = has(t.fx, "fingers") ? 13 : 12, ny = has(t.fx, "fingers") ? 2 : 12;
+    var pw = nx * (cw + j), ph = ny * (ch + j);
+    var p = el("pattern", { id: id, patternUnits: "userSpaceOnUse", width: pw, height: ph }, defs);
+    for (var a = 0; a < nx; a++) for (var b = 0; b < ny; b++) {
+      el("rect", { x: a * (cw + j) + j / 2, y: b * (ch + j) + j / 2, width: cw, height: ch, rx: Math.min(cw, ch) * 0.08, fill: cols[Math.floor(r() * cols.length)] }, p);
+    }
+    el("rect", { width: pw, height: ph * 0.45, fill: "#fff", opacity: 0.07 }, p);
+    return "url(#" + id + ")";
+  }
+
+  function tileFx(g, w, h, t, col, fx, r) {
+    var i, m = Math.min(w, h), base = col._base;
+    if (has(fx, "marble")) {
+      var veins = 2 + Math.floor(r() * 2);
+      for (i = 0; i < veins; i++) {
+        el("path", { d: "M0 " + (r() * h) + " Q" + (r() * w) + " " + (r() * h) + " " + w + " " + (r() * h), fill: "none", stroke: col.v || "#999", "stroke-opacity": 0.45 + r() * 0.35, "stroke-width": Math.max(0.5, m * (0.006 + r() * 0.014)) }, g);
+      }
+      el("path", { d: "M" + (r() * w) + " 0 Q" + (r() * w) + " " + (h / 2) + " " + (r() * w) + " " + h, fill: "none", stroke: col.v || "#999", "stroke-opacity": 0.25, "stroke-width": Math.max(0.4, m * 0.004) }, g);
+    }
+    if (has(fx, "wood")) {
+      var along = w >= h, len = along ? w : h, wid = along ? h : w;
+      for (i = 0; i < 7; i++) {
+        var o = wid * (i + 0.5) / 7, d1 = Math.max(1, Math.min(wid - 1, o + (r() - 0.5) * wid * 0.25)), d2 = Math.max(1, Math.min(wid - 1, o + (r() - 0.5) * wid * 0.25));
+        var d = along ? "M0 " + o + " C" + len * 0.3 + " " + d1 + " " + len * 0.65 + " " + d2 + " " + len + " " + o : "M" + o + " 0 C" + d1 + " " + len * 0.3 + " " + d2 + " " + len * 0.65 + " " + o + " " + len;
+        el("path", { d: d, fill: "none", stroke: shade(base, -0.3), "stroke-opacity": 0.3, "stroke-width": 0.8 }, g);
+      }
+      if (r() < 0.35) el("ellipse", { cx: along ? len * (0.2 + r() * 0.6) : wid / 2, cy: along ? wid / 2 : len * (0.2 + r() * 0.6), rx: along ? m * 0.25 : m * 0.12, ry: along ? m * 0.12 : m * 0.25, fill: shade(base, -0.25), opacity: 0.35 }, g);
+    }
+    var specks = 0, sop = 0.3;
+    if (has(fx, "speckle")) specks = 30; if (has(fx, "fleck")) { specks = 14; sop = 0.15; }
+    if (has(fx, "stone") || has(fx, "travertine")) { specks = 18; sop = 0.18; el("ellipse", { cx: w * (0.3 + r() * 0.4), cy: h * (0.3 + r() * 0.4), rx: w * 0.3, ry: h * 0.25, fill: shade(base, -0.1), opacity: 0.25 }, g); }
+    if (has(fx, "clay")) { specks = 10; sop = 0.2; }
+    specks = Math.min(specks, Math.floor(w * h / 60));
+    for (i = 0; i < specks; i++) {
+      var sr = Math.max(0.4, m * (0.01 + r() * 0.02));
+      el("circle", { cx: sr + r() * (w - 2 * sr), cy: sr + r() * (h - 2 * sr), r: sr, fill: shade(base, r() < 0.5 ? -0.3 : 0.3), opacity: sop }, g);
+    }
+    if (has(fx, "travertine")) for (i = 0; i < Math.min(16, w * h / 300); i++) {
+      var rx = Math.max(0.6, m * (0.02 + r() * 0.04)), ry = rx * 0.35;
+      el("ellipse", { cx: rx + r() * (w - 2 * rx), cy: ry + r() * (h - 2 * ry), rx: rx, ry: ry, fill: shade(base, -0.35), opacity: 0.4 }, g);
+    }
+    if (has(fx, "slate")) for (i = 0; i < 6; i++) {
+      var sy = h * r();
+      el("rect", { x: 0, y: sy, width: w, height: Math.max(0.5, h * 0.04 * r()), fill: shade(base, r() < 0.5 ? -0.25 : 0.18), opacity: 0.35 }, g);
+    }
+    if (has(fx, "terrazzo")) {
+      var chips = col.chips || ["#999", "#333", "#c98f6b"], cr = has(fx, "hex") ? w * 0.36 : 0;
+      for (i = 0; i < Math.min(70, w * h / 70); i++) {
+        var s = Math.max(0.6, m * (0.015 + r() * 0.035)), cx, cy;
+        if (cr) { var a = r() * 6.283, d0 = r() * (cr - s); cx = d0 * Math.cos(a); cy = d0 * Math.sin(a); }
+        else { cx = s + r() * (w - 2 * s); cy = s + r() * (h - 2 * s); }
+        el("polygon", { points: [cx - s, cy - s * 0.4, cx + s * 0.3, cy - s, cx + s, cy + s * 0.5, cx - s * 0.2, cy + s].join(" "), fill: chips[Math.floor(r() * chips.length)] }, g);
+      }
+    }
+    if (has(fx, "encaustic")) {
+      var R = w * 0.42, v = col.v;
+      [[0, 0, R, 0, 0, R, 1], [w, 0, w, R, w - R, 0, 1], [w, h, w - R, h, w, h - R, 1], [0, h, 0, h - R, R, h, 1]].forEach(function (q) {
+        el("path", { d: "M" + q[0] + " " + q[1] + " L" + q[2] + " " + q[3] + " A" + R + " " + R + " 0 0 1 " + q[4] + " " + q[5] + " Z", fill: v }, g);
+      });
+      el("polygon", { points: [w / 2, h * 0.24, w * 0.76, h / 2, w / 2, h * 0.76, w * 0.24, h / 2].join(" "), fill: v }, g);
+      el("polygon", { points: [w / 2, h * 0.38, w * 0.62, h / 2, w / 2, h * 0.62, w * 0.38, h / 2].join(" "), fill: base }, g);
+    }
+    if (has(fx, "victorian")) {
+      el("polygon", { points: [0, 0, w, 0, w / 2, h / 2].join(" "), fill: col.v }, g);
+      el("polygon", { points: [0, h, w, h, w / 2, h / 2].join(" "), fill: col.v }, g);
+      el("polygon", { points: [w / 2, h * 0.32, w * 0.68, h / 2, w / 2, h * 0.68, w * 0.32, h / 2].join(" "), fill: col.k }, g);
+    }
+    if (has(fx, "bevel")) { var b = Math.max(1, m * 0.08); el("rect", { x: b / 2, y: b / 2, width: w - b, height: h - b, fill: "none", stroke: "#fff", "stroke-opacity": 0.28, "stroke-width": b }, g); }
+    if (has(fx, "gloss")) el("polygon", { points: [0, 0, w * 0.55, 0, 0, h * 0.7].join(" "), fill: "#fff", opacity: 0.13 }, g);
+  }
+
+  function draw(svg, t, col, pat, grout, W, H, scale, seed) {
+    while (svg.firstChild) svg.removeChild(svg.firstChild);
+    svg.setAttribute("viewBox", "0 0 " + W + " " + H);
+    svg.setAttribute("preserveAspectRatio", "xMidYMid slice");
+    var defs = el("defs", {}, svg), r = rng(seed || 11), fx = fxOf(t, col);
+    el("rect", { width: W, height: H, fill: grout }, svg);
+    var gap = Math.max(0.8, Math.min(5, t.j * scale * 1.4));
+    if (has(fx, "hex")) {
+      var Rr = (t.w / 2) * scale, hw = Math.sqrt(3) * Rr, row = 0;
+      for (var cy = 0; cy < H + Rr; cy += 1.5 * Rr, row++) for (var cx = (row % 2) * hw / 2; cx < W + hw; cx += hw) {
+        var rr = Rr - gap / 2, pts = [];
+        for (var a = 0; a < 6; a++) { var an = Math.PI / 180 * (60 * a - 90); pts.push(cx + rr * Math.cos(an), cy + rr * Math.sin(an)); }
+        col._base = col.c;
+        el("polygon", { points: pts.join(" "), fill: col.c }, svg);
+        var g0 = el("g", { transform: "translate(" + cx + " " + cy + ")" }, svg);
+        tileFx(g0, hw, hw, t, col, fx.filter(function (f) { return f !== "hex"; }).length ? fx : [], r);
+      }
+      return;
+    }
+    var parent = svg, list;
+    if (pat === "diagonal") {
+      var D = Math.hypot(W, H), ox = (W - D) / 2, oy = (H - D) / 2;
+      parent = el("g", { transform: "rotate(45 " + W / 2 + " " + H / 2 + ")" }, svg);
+      list = layout("straight", t.w * scale, t.h * scale, D, D).map(function (q) { return { x: q.x + ox, y: q.y + oy, w: q.w, h: q.h }; });
+    } else list = layout(pat, t.w * scale, t.h * scale, W, H);
+    var fill = (has(fx, "mosaic") || has(fx, "fingers")) ? mosaicPattern(defs, t, col, scale, r) : null;
+    list.forEach(function (q) {
+      var w = q.w - gap, h = q.h - gap;
+      if (w <= 0 || h <= 0) return;
+      var g = el("g", { transform: "translate(" + (q.x + gap / 2) + " " + (q.y + gap / 2) + ")" }, parent);
+      if (fill) { el("rect", { width: w, height: h, fill: fill }, g); return; }
+      var v = has(fx, "zellige") ? (r() - 0.5) * 0.3 : (has(fx, "wood") || has(fx, "slate") || has(fx, "clay")) ? (r() - 0.5) * 0.16 : (r() - 0.5) * 0.03;
+      col._base = shade(col.c, v);
+      el("rect", { width: w, height: h, fill: col._base }, g);
+      tileFx(g, w, h, t, col, fx, r);
+    });
+  }
+
+  function patsOf(t) {
+    if (t.pats) return t.pats;
+    var ratio = Math.max(t.w, t.h) / Math.min(t.w, t.h);
+    return ratio >= 1.9 ? ["brick", "straight", "third", "vertical", "herringbone"] : ["straight", "brick", "diagonal"];
+  }
+  function swScale(t) { return has(t.fx, "mosaic") || has(t.fx, "fingers") ? 0.55 : t.w >= 2000 ? 0.12 : Math.min(0.75, 110 / Math.max(t.w, t.h)); }
+  function pvScale(t) { return t.w >= 2000 ? 0.15 : t.w >= 1000 ? 0.22 : 0.3; }
+
+  // ---------- state ----------
+  var byId = {}; TILES.forEach(function (t) { byId[t.id] = t; });
+  var cur = { id: TILES[0].id, c: 0, pat: TILES[0].pat || patsOf(TILES[0])[0], grout: TILES[0].g, grade: 1, view: "wall" };
+  var cardColour = {};
+  var basket = [];
+  try { basket = JSON.parse(localStorage.getItem("ar-tile-basket") || "[]").filter(function (b) { return byId[b.id]; }); } catch (e) { basket = []; }
+  function saveBasket() { try { localStorage.setItem("ar-tile-basket", JSON.stringify(basket)); } catch (e) {} }
+
+  var $ = function (id) { return document.getElementById(id); };
+  var money = function (v) { return "£" + Math.round(v).toLocaleString("en-GB"); };
+  var money2 = function (v) { return "£" + v.toLocaleString("en-GB", { minimumFractionDigits: 2, maximumFractionDigits: 2 }); };
+  function lookOf(t, col) { return col.look || t.look; }
+  function lineOf(b) {
+    var t = byId[b.id], col = t.cols[b.c], price = grades(t)[b.grade][1], waste = PATTERNS[b.pat][1];
+    var m2 = Math.ceil(b.area * (1 + waste) * 10) / 10;
+    return { t: t, col: col, price: price, m2: m2, cost: m2 * price };
+  }
+
+  // ---------- filters and cards ----------
+  function addOpts(sel, pairs) { pairs.forEach(function (p) { var o = document.createElement("option"); o.value = p[0]; o.textContent = p[1]; sel.appendChild(o); }); }
+  addOpts($("f-room"), Object.keys(ROOMS).map(function (k) { return [k, ROOMS[k]]; }));
+  var types = [], looks = [];
+  TILES.forEach(function (t) { if (types.indexOf(t.type) < 0) types.push(t.type); t.cols.forEach(function (c) { var l = lookOf(t, c); if (looks.indexOf(l) < 0) looks.push(l); }); });
+  addOpts($("f-type"), types.map(function (x) { return [x, x]; }));
+  addOpts($("f-look"), looks.sort().map(function (x) { return [x, x]; }));
+  addOpts($("f-col"), Object.keys(FAMS).map(function (k) { return [k, FAMS[k]]; }));
+
+  function matchCol(t, f) {
+    for (var i = 0; i < t.cols.length; i++) {
+      var c = t.cols[i];
+      if ((!f.col || c.f === f.col) && (!f.look || lookOf(t, c) === f.look)) return i;
+    }
+    return -1;
+  }
+
+  function renderGrid() {
+    var f = { q: $("f-q").value.trim().toLowerCase(), room: $("f-room").value, type: $("f-type").value, look: $("f-look").value, col: $("f-col").value, max: +$("f-max").value || 0, sort: $("f-sort").value };
+    var list = TILES.filter(function (t) {
+      if (f.room && t.rooms.indexOf(f.room) < 0) return false;
+      if (f.type && t.type !== f.type) return false;
+      if (f.max && t.p[0] > f.max) return false;
+      if (matchCol(t, f) < 0) return false;
+      if (f.q) {
+        var hay = [t.name, t.type, t.look, t.fin, t.rooms.map(function (r) { return ROOMS[r]; }).join(" "), (t.pats || []).map(function (p) { return PATTERNS[p][0]; }).join(" "), t.cols.map(function (c) { return c.n + " " + (c.look || ""); }).join(" ")].join(" ").toLowerCase();
+        if (f.q.split(/\s+/).some(function (w) { return hay.indexOf(w) < 0; })) return false;
+      }
+      return true;
+    });
+    if (f.sort === "lo") list.sort(function (a, b) { return a.p[0] - b.p[0]; });
+    else if (f.sort === "hi") list.sort(function (a, b) { return b.p[1] - a.p[1]; });
+    else if (f.sort === "az") list.sort(function (a, b) { return a.name.localeCompare(b.name); });
+    var grid = $("ts-grid");
+    grid.textContent = "";
+    var total = 0; list.forEach(function (t) { total += t.cols.length; });
+    $("ts-count").textContent = list.length ? list.length + " tile styles, " + total + " colours" : "No tiles match. Try clearing a filter.";
+    list.forEach(function (t) {
+      var ci = (f.col || f.look) ? matchCol(t, f) : (cardColour[t.id] || 0);
+      cardColour[t.id] = ci;
+      grid.appendChild(card(t));
+    });
+  }
+
+  function card(t) {
+    var a = document.createElement("article");
+    a.className = "ts-card" + (t.id === cur.id ? " on" : "");
+    a.dataset.id = t.id;
+    var sw = document.createElement("button");
+    sw.type = "button"; sw.className = "ts-sw";
+    var svg = el("svg", { "aria-hidden": "true", focusable: "false" }, sw);
+    var body = document.createElement("div"); body.className = "ts-body";
+    body.innerHTML = '<p class="ts-type"></p><h3></h3><div class="ts-dots" role="group"></div><p class="ts-cname"></p><ul class="ts-tags"></ul><p class="ts-price"></p><div class="ts-acts"><button type="button" class="btn sm pv">Preview and price</button><button type="button" class="btn ghost sm add">Add to basket</button></div>';
+    body.querySelector(".ts-type").textContent = t.type + " · " + t.w + " × " + t.h + " mm" + (has(t.fx, "mosaic") || has(t.fx, "fingers") ? " sheet" : "") + " · " + t.fin;
+    body.querySelector("h3").textContent = t.name;
+    body.querySelector(".ts-price").innerHTML = "<b>" + money(t.p[0]) + "–" + money(t.p[1]) + "</b> per m²" + (t.approx ? " (approx.)" : "");
+    var tags = body.querySelector(".ts-tags");
+    t.rooms.slice(0, 4).forEach(function (r) { var li = document.createElement("li"); li.textContent = ROOMS[r]; tags.appendChild(li); });
+    if (t.frost) { var li = document.createElement("li"); li.textContent = "Frost-proof"; tags.appendChild(li); }
+    var dots = body.querySelector(".ts-dots");
+    dots.setAttribute("aria-label", t.name + " colours");
+    function paint() {
+      var col = t.cols[cardColour[t.id]];
+      draw(svg, t, col, t.pat || patsOf(t)[0], GROUTS[t.g][1], 240, 150, swScale(t), 5);
+      body.querySelector(".ts-cname").textContent = col.n;
+      sw.setAttribute("aria-label", "Preview " + t.name + " in " + col.n);
+      Array.prototype.forEach.call(dots.children, function (d, i) { d.setAttribute("aria-pressed", i === cardColour[t.id] ? "true" : "false"); });
+    }
+    t.cols.forEach(function (col, i) {
+      var d = document.createElement("button");
+      d.type = "button"; d.className = "ts-dot"; d.title = col.n;
+      d.setAttribute("aria-label", col.n);
+      d.style.background = col.mix ? "linear-gradient(135deg," + col.mix.join(",") + ")" : col.v ? "linear-gradient(135deg," + col.c + " 55%," + col.v + " 56%)" : col.c;
+      d.addEventListener("click", function () { cardColour[t.id] = i; paint(); if (cur.id === t.id) { cur.c = i; renderPreview(); } });
+      dots.appendChild(d);
+    });
+    paint();
+    function open() { select(t.id, cardColour[t.id]); if (window.matchMedia("(max-width: 1040px)").matches) { $("preview").focus({ preventScroll: true }); $("preview").scrollIntoView({ behavior: "smooth", block: "start" }); } }
+    sw.addEventListener("click", open);
+    body.querySelector(".pv").addEventListener("click", open);
+    body.querySelector(".add").addEventListener("click", function () {
+      addToBasket({ id: t.id, c: cardColour[t.id], grade: 1, pat: t.pat || patsOf(t)[0], grout: t.g, area: areaVal() });
+    });
+    a.appendChild(sw); a.appendChild(body);
+    return a;
+  }
+
+  // ---------- preview ----------
+  function select(id, c) {
+    var t = byId[id];
+    cur.id = id; cur.c = c || 0; cur.grout = t.g;
+    if (patsOf(t).indexOf(cur.pat) < 0 || id !== cur.lastId) cur.pat = t.pat || patsOf(t)[0];
+    cur.lastId = id;
+    Array.prototype.forEach.call($("ts-grid").children, function (a) { a.classList.toggle("on", a.dataset.id === id); });
+    renderPreview(true);
+  }
+
+  function areaVal() { var v = parseFloat($("pv-area").value); return v > 0 ? Math.min(v, 2000) : 1; }
+
+  function renderPreview(full) {
+    var t = byId[cur.id], col = t.cols[cur.c];
+    if (full) {
+      $("pv-type").textContent = t.type + " · " + t.w + " × " + t.h + " mm · " + t.fin;
+      $("pv-h").textContent = t.name;
+      var dots = $("pv-dots"); dots.textContent = "";
+      t.cols.forEach(function (cc, i) {
+        var d = document.createElement("button");
+        d.type = "button"; d.className = "ts-dot"; d.title = cc.n; d.setAttribute("aria-label", cc.n);
+        d.style.background = cc.mix ? "linear-gradient(135deg," + cc.mix.join(",") + ")" : cc.v ? "linear-gradient(135deg," + cc.c + " 55%," + cc.v + " 56%)" : cc.c;
+        d.addEventListener("click", function () { cur.c = i; cardColour[t.id] = i; renderPreview(); var a = document.querySelector('.ts-card[data-id="' + t.id + '"] .ts-dots'); if (a) a.children[i].click(); });
+        dots.appendChild(d);
+      });
+      var ps = $("pv-pat"); ps.textContent = "";
+      addOpts(ps, patsOf(t).map(function (p) { return [p, PATTERNS[p][0]]; }));
+      var gs = $("pv-grade"); gs.textContent = "";
+      addOpts(gs, grades(t).map(function (g, i) { return [i, g[0] + ": " + money(g[1]) + " per m²"]; }));
+      var know = $("pv-know"); know.textContent = "";
+      var rows = [
+        ["Where it works", t.rooms.map(function (r) { return ROOMS[r]; }).join(", ") + "."],
+        ["Slip and wear", t.slip],
+        ["Underfloor heating", t.ufh ? "Yes, suitable." : t.rooms.indexOf("floor") > -1 ? "Check the product." : "Not needed: wall tile."],
+        t.frost ? ["Outdoors", "Frost-proof, 20 mm thick."] : null,
+        ["Adhesive", t.adh],
+        ["Grout joints", t.j + " mm."],
+        ["How much to order", "Your area plus 10% for cuts (15% for herringbone or diagonal). We work it out for you."],
+        ["Looking after it", t.care],
+        ["How we fit it", t.pro],
+        t.note ? ["Also", t.note] : null,
+        ["Price checked at", t.src.map(function (s) { return '<a href="' + SRC[s][1] + '" target="_blank" rel="noopener">' + SRC[s][0] + "</a>"; }).join(", ") + (t.approx ? " (approximate)" : "")]
+      ];
+      rows.forEach(function (rw) {
+        if (!rw) return;
+        var dv = document.createElement("div"), dt = document.createElement("dt"), dd = document.createElement("dd");
+        dt.textContent = rw[0];
+        if (rw[0] === "Price checked at") dd.innerHTML = rw[1]; else dd.textContent = rw[1];
+        dv.appendChild(dt); dv.appendChild(dd); know.appendChild(dv);
+      });
+    }
+    $("pv-pat").value = cur.pat;
+    $("pv-grade").value = cur.grade;
+    $("pv-cname").textContent = col.n + " · " + lookOf(t, col) + " look";
+    Array.prototype.forEach.call($("pv-dots").children, function (d, i) { d.setAttribute("aria-pressed", i === cur.c ? "true" : "false"); });
+    Array.prototype.forEach.call($("pv-grouts").children, function (d, i) { d.setAttribute("aria-pressed", i === cur.grout ? "true" : "false"); });
+    $("pv-gname").textContent = GROUTS[cur.grout][0];
+    var sc = pvScale(t), W = 600, H = 400;
+    // The floor view tilts the picture, so draw a wider area and show its edges too.
+    var fl = cur.view === "floor", ex = fl ? 300 : 0;
+    draw($("pv-svg"), t, col, cur.pat, GROUTS[cur.grout][1], W + 2 * ex, H + ex, sc, 21);
+    if (fl) $("pv-svg").setAttribute("viewBox", ex + " " + ex + " " + W + " " + H);
+    $("pv-svg").setAttribute("aria-label", t.name + ", " + col.n + ", " + PATTERNS[cur.pat][0].toLowerCase() + ", " + GROUTS[cur.grout][0].toLowerCase() + " grout, shown on a " + cur.view);
+    $("pv-cap").textContent = "About " + (W / sc / 1000).toFixed(1) + " m × " + (H / sc / 1000).toFixed(1) + " m of " + cur.view + " shown";
+    $("pv-stage").className = "pv-stage" + (cur.view === "floor" ? " floor" : "");
+    $("pv-stage").style.background = GROUTS[cur.grout][1];
+    // Price
+    var A = areaVal(), pat = PATTERNS[cur.pat], price = grades(t)[cur.grade][1];
+    var m2 = Math.ceil(A * (1 + pat[1]) * 10) / 10;
+    var tiles = m2 * price, loyal = $("pv-loyal").checked;
+    var lab = [A * t.lab[0] * (1 + pat[2]), A * t.lab[1] * (1 + pat[2])];
+    var sun = [A * (SUNDRIES[0] + (t.seal ? 3 : 0)), A * (SUNDRIES[1] + (t.seal ? 6 : 0))];
+    var fit = [lab[0] + sun[0], lab[1] + sun[1]], save = loyal ? [fit[0] * 0.1, fit[1] * 0.1] : [0, 0];
+    $("pv-est").innerHTML =
+      "<tr><td>Tiles: " + m2 + " m² <small>" + A + " m² + " + Math.round(pat[1] * 100) + "% for cuts, at " + money(price) + " per m²</small></td><td class='num'>" + money2(tiles) + "</td></tr>" +
+      "<tr><td>Fitting by AR Tiling <small>Labour" + (pat[2] ? " (+" + Math.round(pat[2] * 100) + "% for the pattern)" : "") + ", adhesive, grout and trims" + (t.seal ? ", sealing" : "") + "</small></td><td class='num'>" + money(fit[0]) + "–" + money(fit[1]) + "</td></tr>" +
+      (loyal ? "<tr class='save'><td>Loyal customer 10% off fitting</td><td class='num'>−" + money(save[0]) + "–" + money(save[1]) + "</td></tr>" : "") +
+      "<tr class='tot'><td>Supplied and fitted</td><td class='num'>" + money(tiles + fit[0] - save[0]) + "–" + money(tiles + fit[1] - save[1]) + "</td></tr>";
+  }
+
+  GROUTS.forEach(function (g, i) {
+    var b = document.createElement("button");
+    b.type = "button"; b.style.background = g[1]; b.title = g[0]; b.setAttribute("aria-label", g[0] + " grout");
+    b.addEventListener("click", function () { cur.grout = i; renderPreview(); });
+    $("pv-grouts").appendChild(b);
+  });
+  document.querySelectorAll(".seg button").forEach(function (b) {
+    b.addEventListener("click", function () {
+      cur.view = b.dataset.view;
+      document.querySelectorAll(".seg button").forEach(function (o) { o.setAttribute("aria-pressed", o === b ? "true" : "false"); });
+      renderPreview();
+    });
+  });
+  $("pv-pat").addEventListener("change", function () { cur.pat = this.value; renderPreview(); });
+  $("pv-grade").addEventListener("change", function () { cur.grade = +this.value; renderPreview(); });
+  $("pv-area").addEventListener("input", function () { renderPreview(); });
+  $("pv-loyal").addEventListener("change", function () { renderPreview(); });
+  $("pv-add").addEventListener("click", function () {
+    addToBasket({ id: cur.id, c: cur.c, grade: cur.grade, pat: cur.pat, grout: cur.grout, area: areaVal() });
+  });
+
+  // ---------- basket ----------
+  function addToBasket(b) {
+    var same = basket.filter(function (x) { return x.id === b.id && x.c === b.c && x.grade === b.grade && x.pat === b.pat; })[0];
+    if (same) same.area = Math.round((same.area + b.area) * 10) / 10; else basket.push(b);
+    saveBasket(); renderBasket();
+    var t = byId[b.id];
+    $("ts-status").textContent = "Added " + t.name + " (" + t.cols[b.c].n + ") to your basket.";
+  }
+
+  function renderBasket() {
+    var ul = $("bk-list"); ul.textContent = "";
+    var sum = 0;
+    basket.forEach(function (b, i) {
+      var L = lineOf(b); sum += L.cost;
+      var li = document.createElement("li");
+      var svg = el("svg", { "aria-hidden": "true" }, li);
+      draw(svg, L.t, L.col, b.pat, GROUTS[b.grout][1], 160, 100, swScale(L.t), 3);
+      var d = document.createElement("div");
+      d.innerHTML = "<b></b><small></small><small></small>";
+      d.children[0].textContent = L.t.name + ", " + L.col.n;
+      d.children[1].textContent = grades(L.t)[b.grade][0] + " quality · " + PATTERNS[b.pat][0] + " · " + GROUTS[b.grout][0] + " grout";
+      d.children[2].textContent = b.area + " m² to tile → " + L.m2 + " m² at " + money(L.price) + " per m² = " + money2(L.cost);
+      li.appendChild(d);
+      var ctl = document.createElement("div");
+      ctl.style.display = "grid"; ctl.style.gap = "6px";
+      var lab = document.createElement("label"); lab.textContent = "Area (m²)"; lab.setAttribute("for", "bk-a" + i);
+      lab.style.cssText = "font:700 .72rem var(--mono);color:var(--muted);text-transform:uppercase";
+      var inp = document.createElement("input"); inp.type = "number"; inp.id = "bk-a" + i; inp.min = "0.5"; inp.step = "0.5"; inp.value = b.area;
+      inp.style.cssText = "width:100px;min-height:40px;font:inherit;color:var(--ink);background:var(--surface);border:2px solid var(--grout);border-radius:4px;padding:6px";
+      inp.addEventListener("change", function () { var v = parseFloat(inp.value); if (v > 0) { b.area = Math.min(v, 2000); saveBasket(); renderBasket(); } });
+      var rm = document.createElement("button"); rm.type = "button"; rm.className = "rm"; rm.textContent = "Remove";
+      rm.setAttribute("aria-label", "Remove " + L.t.name + ", " + L.col.n);
+      rm.addEventListener("click", function () { basket.splice(i, 1); saveBasket(); renderBasket(); $("ts-status").textContent = "Removed from your basket."; });
+      ctl.appendChild(lab); ctl.appendChild(inp); ctl.appendChild(rm);
+      li.appendChild(ctl);
+      ul.appendChild(li);
+    });
+    $("bk-n").textContent = basket.length;
+    $("bk-t").textContent = money(sum);
+    $("bk-empty").hidden = basket.length > 0;
+    $("bk-checkout").hidden = basket.length === 0;
+    var del = DELIVERY[+$("o-how").value || 0][1];
+    $("bk-sum").innerHTML = "<tr><td>Tiles (" + basket.length + (basket.length === 1 ? " line" : " lines") + ")</td><td class='num'>" + money2(sum) + "</td></tr>" +
+      "<tr><td>" + DELIVERY[+$("o-how").value || 0][0] + "</td><td class='num'>" + (del ? money2(del) : "Free") + "</td></tr>" +
+      "<tr class='tot'><td>Total including VAT</td><td class='num'>" + money2(sum + del) + "</td></tr>" +
+      "<tr><td colspan='2'><small>Fitting is quoted separately after a free visit. Adhesive, grout and trims can be added to your order on request.</small></td></tr>";
+    return sum;
+  }
+
+  addOpts($("o-how"), DELIVERY.map(function (d, i) { return [i, d[0] + (d[1] ? " (" + money(d[1]) + ")" : "")]; }));
+  $("o-how").addEventListener("change", renderBasket);
+
+  $("order-form").addEventListener("submit", function (e) {
+    e.preventDefault();
+    var form = this, out = $("o-sent");
+    function say(m, bad) { out.innerHTML = m; out.className = bad ? "sent bad" : "sent"; out.hidden = false; }
+    var need = [["o-name", "your name"], ["o-phone", "your phone number"], ["o-email", "your email"], ["o-post", "your postcode"]], miss = [], first = null;
+    need.forEach(function (n) {
+      var f = $(n[0]), v = f.value.trim(), ok = n[0] === "o-email" ? /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(v) : v.length > 0;
+      if (ok) f.removeAttribute("aria-invalid"); else { f.setAttribute("aria-invalid", "true"); miss.push(n[1]); first = first || f; }
+    });
+    var how = +$("o-how").value;
+    if (DELIVERY[how][1] > 0 && !$("o-addr").value.trim()) { $("o-addr").setAttribute("aria-invalid", "true"); miss.push("your delivery address"); first = first || $("o-addr"); } else $("o-addr").removeAttribute("aria-invalid");
+    if (miss.length) { say("Please add " + miss.join(", ").replace(/, ([^,]*)$/, " and $1") + ".", true); first.focus(); return; }
+    if (form.website.value) { say("Thanks, we've got your order."); return; }
+    var sum = renderBasket(), del = DELIVERY[how][1];
+    var lines = basket.map(function (b, i) {
+      var L = lineOf(b);
+      return (i + 1) + ". " + L.t.name + ", " + L.col.n + ", " + grades(L.t)[b.grade][0] + " (" + money(L.price) + "/m²), " + PATTERNS[b.pat][0].toLowerCase() + ", " + GROUTS[b.grout][0].toLowerCase() + " grout: " + L.m2 + " m² = " + money2(L.cost);
+    });
+    var text = "TILE ORDER\n" + lines.join("\n") + "\n\nTiles: " + money2(sum) + "\n" + DELIVERY[how][0] + ": " + (del ? money2(del) : "free") + "\nTotal inc VAT: " + money2(sum + del) +
+      "\n\nName: " + $("o-name").value.trim() + "\nPhone: " + $("o-phone").value.trim() + "\nEmail: " + $("o-email").value.trim() + "\nPostcode: " + $("o-post").value.trim().toUpperCase() +
+      "\nAddress: " + ($("o-addr").value.trim() || "-") + "\n\nNotes: " + ($("o-msg").value.trim() || "-");
+    var subject = "Tile order: " + money2(sum + del) + ", " + $("o-post").value.trim().toUpperCase();
+    var mailto = SEND_TO ? "mailto:" + SEND_TO + "?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(text) : "";
+    var done = function () { basket = []; saveBasket(); renderBasket(); $("bk-checkout").hidden = false; say("Thank you. Your order is with us: we'll check stock and email your secure payment link, usually within one working day."); };
+    if (FORM_ENDPOINT) {
+      var data = new FormData(form); data.append("subject", subject); data.append("order", text);
+      say("Sending your order...");
+      fetch(FORM_ENDPOINT, { method: "POST", body: data, headers: { Accept: "application/json" } })
+        .then(function (r) { if (!r.ok) throw new Error(r.status); done(); })
+        .catch(function () { say("Sorry, that didn't send." + (mailto ? ' Please <a href="' + mailto + '">email us your order</a> instead.' : " Please try again in a minute."), true); });
+    } else if (mailto) {
+      window.location.href = mailto;
+      say('Your email app should now open with your order filled in. Just press send. Nothing opened? Email us at <a href="mailto:' + SEND_TO + '">' + SEND_TO + "</a>.");
+    } else {
+      say("This is a preview of the site, so the order hasn't been sent. When the site goes live, orders go straight to AR Tiling.");
+    }
+  });
+
+  // ---------- sources ----------
+  Object.keys(SRC).forEach(function (k) {
+    var li = document.createElement("li"), a = document.createElement("a");
+    a.href = SRC[k][1]; a.textContent = SRC[k][0]; a.target = "_blank"; a.rel = "noopener";
+    li.appendChild(a); $("ts-src").appendChild(li);
+  });
+
+  ["f-q", "f-room", "f-type", "f-look", "f-col", "f-max", "f-sort"].forEach(function (id) { $(id).addEventListener(id === "f-q" ? "input" : "change", renderGrid); });
+  $("ts-filters").addEventListener("reset", function () { setTimeout(renderGrid, 0); });
+  $("ts-filters").addEventListener("submit", function (e) { e.preventDefault(); });
+
+  renderGrid();
+  select(cur.id, 0);
+  renderBasket();
+})();
+</script>
+
+</main>
+<footer class="foot">
+  <div class="wrap">
+    <div>
+      <a class="brand" href="./"><svg class="mark" viewBox="0 0 56.56 36.77" aria-hidden="true" focusable="false"><g transform="translate(-3.72 -6.00)"><polygon fill="#ff5020" points="32.00,6.00 3.72,34.28 12.21,42.77 40.49,14.49"/><polygon fill="#ff9a3d" points="41.90,15.90 60.28,34.28 51.79,42.77 33.41,24.39"/><polygon fill="#c8300f" points="32.00,25.83 40.00,33.83 32.00,41.83 24.00,33.83"/></g></svg><span class="brand-txt"><b><span class="ar">AR</span> TILING</b><small>Tiling specialists</small></span></a>
+      <p style="margin-top:12px">Professional tiling team based in Greater Manchester, working UK-wide. Homes, commercial and contracts. No job too difficult.</p>
+    </div>
+    <div>
+      <h3>Services</h3>
+      <ul><li><a href="bathroom-tiling.html">Bathroom tiling</a></li><li><a href="wet-rooms-and-showers.html">Wet rooms and showers</a></li><li><a href="kitchen-tiling.html">Kitchen tiling</a></li><li><a href="floor-tiling.html">Floor tiling</a></li><li><a href="outdoor-tiling.html">Outdoor tiling and patios</a></li><li><a href="commercial-tiling.html">Commercial tiling and contracts</a></li></ul>
+    </div>
+    <div>
+      <h3>Contact</h3>
+      <ul><li><span class="fill">[Phone number]</span></li><li><span class="fill">[Email address]</span></li><li>ar-tiling.com</li><li><a href="tile-shop.html">Tile shop</a></li><li><a href="guides.html">Guides</a></li><li><a href="./#quote">Get a free quote</a></li><li><a href="privacy.html">Privacy notice</a></li><li><a href="terms.html">Terms of business</a></li><li><a href="aftercare.html">Caring for your tiles</a></li></ul>
+    </div>
+    <p class="base">© <span class="yr">2026</span> AR Tiling · ar-tiling.com · <span class="fill">[Trading name / company number once registered]</span></p>
+  </div>
+</footer>
+<div class="callbar" aria-label="Quick contact">
+  <a class="btn ghost" href="./#quote">Call: <span class="fill">[Phone]</span></a>
+  <a class="btn" href="./#quote">Free quote</a>
+</div>
+<script>
+document.querySelectorAll(".yr").forEach(function (e) { e.textContent = new Date().getFullYear(); });
+document.querySelectorAll(".menu nav a").forEach(function (a) { a.addEventListener("click", function () { a.closest("details").open = false; }); });
+</script>
+</body>
+</html>

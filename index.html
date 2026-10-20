@@ -1,0 +1,1200 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>AR Tiling | Tiling Specialists</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="AR Tiling, tiling specialists. Homes across Greater Manchester and commercial contracts UK-wide. Bathrooms, wet rooms, kitchens, floors, outdoor. No job too difficult. Loyal customers save 10%.">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "HomeAndConstructionBusiness", "name": "AR Tiling", "url": "https://ar-tiling.com", "description": "Professional tiling team based in Greater Manchester, working UK-wide: homes, commercial tiling and contracts.", "areaServed": [{"@type": "Country", "name": "United Kingdom"}, {"@type": "AdministrativeArea", "name": "Greater Manchester"}], "knowsAbout": ["Bathroom tiling", "Wet rooms", "Kitchen splashbacks", "Floor tiling", "Large-format porcelain", "Outdoor porcelain patios", "Natural stone tiling"]}</script>
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta property="og:image" content="https://ar-tiling.com/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anybody:wdth,wght@75..125,500..900&family=Public+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: a tiler's setting-out grid. The page is laid out like a tiled wall: cards sit on grout lines, the hero is a wall of glazed tiles.
+   Look: deliberately one theme, as the owner asked: warm black tiles glazed in one ember range,
+   deep red through red-orange to amber, so every colour on the page belongs to the same fire. */
+:root {
+  --porcelain: #120d0b;   /* page: warm polished black */
+  --surface: #1c1512;
+  --night: #0b0807;       /* footer */
+  --ink: #f8eee6;
+  --muted: #c2b0a2;
+  --grout: #35271f;       /* warm grout lines between everything */
+  --glaze: #ff5020;       /* red-orange, the brand colour */
+  --glaze-2: #c8300f;     /* deep ember red */
+  --glaze-3: #ff9a3d;     /* amber */
+  --brass: #ffad66;       /* labels and trim */
+  --on-glaze: #1a0b05;
+  --ember: linear-gradient(115deg, #b72a0c 0%, #ff5020 48%, #ff9a3d 100%);
+  --fill-bg: rgba(255, 154, 61, 0.12); /* placeholder highlight, same family */
+  --fill-fg: #ffc08a;
+  color-scheme: dark;
+  --display: "Anybody", "Arial Narrow", "Helvetica Neue", Arial, sans-serif;
+  --body: "Public Sans", "Segoe UI", Roboto, Arial, sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace;
+  --radius: 4px;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+body { background: var(--porcelain); color: var(--ink); font-family: var(--body); font-size: 17px; line-height: 1.6; }
+a { color: var(--glaze); }
+a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible, summary:focus-visible { outline: 3px solid var(--brass); outline-offset: 2px; }
+.wrap { max-width: 1180px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+h1, h2, h3 { font-family: var(--display); font-stretch: 85%; line-height: 1.02; text-wrap: balance; margin: 0; letter-spacing: -0.01em; }
+h2 { font-size: clamp(2rem, 5vw, 3.1rem); font-weight: 800; }
+h3 { font-size: 1.35rem; font-weight: 700; font-stretch: 90%; }
+p { margin: 0; }
+.label { font-family: var(--mono); font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--brass); }
+.lede { color: var(--muted); max-width: 60ch; font-size: 1.08rem; }
+.fill { background: var(--fill-bg); color: var(--fill-fg); padding: 0 5px; border-radius: 3px; border: 1px dashed currentColor; font-weight: 600; -webkit-box-decoration-break: clone; box-decoration-break: clone; }
+section { padding-block: 84px; }
+.sec-head { display: grid; gap: 14px; margin-bottom: 40px; }
+
+/* Header */
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--surface); }
+.site-head { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 9; background: var(--surface); border-bottom: 1px solid var(--grout); }
+.site-head .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 12px; }
+.brand { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--ink); }
+.mark { display: block; width: 46px; height: auto; flex: none; }
+.brand .ar { color: var(--glaze); }
+.brand-txt { display: grid; gap: 4px; line-height: 1; }
+.brand-txt small { font: 700 0.6rem var(--body); letter-spacing: 0.24em; text-transform: uppercase; color: var(--brass); }
+.brand b { font-family: var(--display); font-weight: 900; font-stretch: 80%; font-size: 1.5rem; letter-spacing: 0.02em; }
+.nav { display: flex; align-items: center; gap: 22px; }
+.nav a { color: var(--ink); text-decoration: none; font-weight: 600; font-size: 0.95rem; }
+.nav a:hover { color: var(--glaze); }
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; font: 700 1rem var(--body); padding: 13px 22px; border-radius: var(--radius); border: 2px solid var(--glaze); background: var(--glaze); color: var(--on-glaze); text-decoration: none; cursor: pointer; }
+.btn:hover { background: var(--glaze-3); border-color: var(--glaze-3); }
+.btn { box-shadow: 0 0 22px rgba(255, 80, 32, 0.30); }
+.btn.ghost { box-shadow: none; }
+.btn.ghost { background: transparent; color: var(--ink); border-color: var(--ink); }
+.btn.ghost:hover { background: var(--ink); color: var(--porcelain); }
+.nav .btn { padding: 9px 16px; font-size: 0.92rem; color: var(--on-glaze); }
+.menu { display: none; }
+.menu summary { list-style: none; cursor: pointer; font-weight: 700; border: 2px solid var(--ink); border-radius: var(--radius); padding: 7px 14px; }
+.menu summary::-webkit-details-marker { display: none; }
+.menu nav { position: absolute; left: 0; right: 0; top: 100%; background: var(--surface); border-bottom: 1px solid var(--grout); display: grid; padding: 8px max(16px, env(safe-area-inset-right, 0px)) 16px max(16px, env(safe-area-inset-left, 0px)); }
+.menu nav a { padding: 12px 0; border-bottom: 1px solid var(--grout); color: var(--ink); text-decoration: none; font-weight: 600; }
+@media (max-width: 860px) { .nav { display: none; } .menu { display: block; } }
+
+/* Hero: a tiled wall */
+.hero { padding-block: 56px 72px; border-bottom: 1px solid var(--grout); }
+.hero .wrap { display: grid; grid-template-columns: 1.05fr 1fr; gap: 48px; align-items: center; }
+.hero h1 { font-size: clamp(2.7rem, 7.2vw, 5.4rem); font-weight: 900; font-stretch: 78%; text-transform: uppercase; }
+.hero h1 em { font-style: normal; background: var(--ember); -webkit-background-clip: text; background-clip: text; color: transparent; filter: drop-shadow(0 0 22px rgba(255, 80, 32, 0.35)); }
+.hero-copy { display: grid; gap: 22px; min-width: 0; }
+.hero-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+.facts { display: flex; flex-wrap: wrap; gap: 8px 20px; padding: 0; margin: 0; list-style: none; font-weight: 600; font-size: 0.95rem; }
+.facts li { display: flex; align-items: center; gap: 8px; }
+.facts li::before { content: ""; width: 10px; height: 10px; background: var(--glaze); border-radius: 1px; outline: 2px solid var(--grout); }
+.wall { display: grid; grid-template-columns: repeat(6, 1fr); gap: 5px; background: var(--grout); padding: 5px; border-radius: 6px; aspect-ratio: 6 / 5; max-width: 100%; }
+.wall span { border-radius: 2px; background: var(--glaze); box-shadow: inset 0 0 0 1px rgba(255,255,255,0.08), inset -6px -8px 14px rgba(0,0,0,0.14), inset 6px 6px 12px rgba(255,255,255,0.10); }
+.wall span.g2 { background: var(--glaze-2); }
+.wall span.g3 { background: var(--glaze-3); }
+.wall span.w { background: var(--surface); }
+.wall-cap { display: flex; justify-content: space-between; gap: 12px; font-family: var(--mono); font-size: 0.75rem; color: var(--muted); margin-top: 8px; flex-wrap: wrap; }
+@media (prefers-reduced-motion: no-preference) {
+  .wall span { animation: set 0.6s ease-out both; }
+  @keyframes set { from { transform: scale(0.94); filter: brightness(1.25); } to { transform: none; filter: none; } }
+}
+@media (max-width: 860px) { .hero .wrap { grid-template-columns: 1fr; } }
+
+/* Services: tiles on a grout grid */
+.tiles { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 3px; background: var(--grout); border: 3px solid var(--grout); border-radius: 6px; overflow: hidden; }
+.tile { background: var(--surface); padding: 28px 26px 30px; display: grid; gap: 10px; align-content: start; min-width: 0; }
+.tile .spec { font-family: var(--mono); font-size: 0.78rem; color: var(--muted); }
+.tile p { color: var(--muted); }
+.tile ul { margin: 4px 0 0; padding-left: 18px; color: var(--ink); font-size: 0.96rem; }
+@media (max-width: 900px) { .tiles { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 560px) { .tiles { grid-template-columns: 1fr; } }
+
+/* Gallery */
+.band { background: var(--surface); border-block: 1px solid var(--grout); }
+.gallery { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.shot { aspect-ratio: 4 / 3; border-radius: var(--radius); border: 2px dashed var(--grout); display: grid; place-items: center; text-align: center; padding: 16px; color: var(--muted); font-size: 0.92rem; background:
+  linear-gradient(var(--grout) 1px, transparent 1px) 0 0 / 28px 28px,
+  linear-gradient(90deg, var(--grout) 1px, transparent 1px) 0 0 / 28px 28px; background-color: var(--porcelain); max-width: 100%; }
+.shot b { display: block; color: var(--ink); font-family: var(--display); font-stretch: 90%; font-size: 1.05rem; margin-bottom: 4px; }
+.shot.big { grid-column: span 2; grid-row: span 2; aspect-ratio: auto; }
+.note { margin-top: 16px; color: var(--muted); font-size: 0.92rem; }
+@media (max-width: 700px) { .gallery { grid-template-columns: 1fr 1fr; } .shot.big { grid-column: span 2; grid-row: auto; aspect-ratio: 4 / 3; } }
+
+/* How a job runs */
+.steps { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 28px 32px; counter-reset: s; }
+.steps li { counter-increment: s; display: grid; gap: 8px; padding-top: 16px; border-top: 3px solid var(--glaze); min-width: 0; }
+.steps li::before { content: counter(s, decimal-leading-zero); font-family: var(--mono); color: var(--brass); font-size: 0.85rem; }
+.steps p { color: var(--muted); }
+@media (max-width: 860px) { .steps { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 520px) { .steps { grid-template-columns: 1fr; } }
+
+/* Under the tiles */
+.under { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 48px; align-items: start; }
+.layers { display: grid; gap: 0; border: 3px solid var(--grout); border-radius: 6px; overflow: hidden; }
+.layer { display: grid; grid-template-columns: 150px 1fr; gap: 16px; padding: 16px 18px; background: var(--surface); border-top: 3px solid var(--grout); min-width: 0; }
+.layer:first-child { border-top: 0; }
+.layer .what { font-family: var(--mono); font-size: 0.8rem; color: var(--glaze); font-weight: 500; }
+.layer p { color: var(--muted); font-size: 0.96rem; }
+.layer.top { background: var(--ember); }
+.layer.top .what, .layer.top p { color: var(--on-glaze); }
+@media (max-width: 860px) { .under { grid-template-columns: 1fr; } }
+@media (max-width: 480px) { .layer { grid-template-columns: 1fr; gap: 4px; } }
+
+/* Calculator */
+.calc { display: grid; grid-template-columns: 1fr 1fr; gap: 0; border: 3px solid var(--grout); border-radius: 6px; overflow: hidden; background: var(--grout); }
+.calc form { background: var(--surface); padding: 26px; display: grid; gap: 16px; min-width: 0; }
+.calc .row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.field { display: grid; gap: 6px; min-width: 0; }
+.field label { font-weight: 600; font-size: 0.92rem; }
+.field small { color: var(--muted); font-size: 0.82rem; }
+input, select, textarea { font: inherit; font-size: 1rem; color: var(--ink); background: var(--porcelain); border: 2px solid var(--grout); border-radius: var(--radius); padding: 11px 12px; width: 100%; min-width: 0; }
+textarea { min-height: 120px; resize: vertical; }
+.result { background: var(--ember); color: var(--on-glaze); padding: 26px; display: grid; gap: 18px; align-content: start; margin-left: 3px; min-width: 0; }
+.result dl { margin: 0; display: grid; gap: 14px; }
+.result dt { font-family: var(--mono); font-size: 0.78rem; letter-spacing: 0.06em; text-transform: uppercase; opacity: 0.85; }
+.result dd { margin: 0; font-family: var(--display); font-weight: 800; font-stretch: 85%; font-size: 2.2rem; line-height: 1; font-variant-numeric: tabular-nums; }
+.result p { font-size: 0.9rem; opacity: 0.9; }
+@media (max-width: 760px) { .calc { grid-template-columns: 1fr; } .result { margin-left: 0; margin-top: 3px; } }
+
+/* Areas */
+.areas { display: flex; flex-wrap: wrap; gap: 8px; padding: 0; margin: 0; list-style: none; }
+.areas li { background: var(--surface); border: 2px solid var(--grout); border-radius: var(--radius); padding: 8px 14px; font-weight: 600; }
+
+/* FAQ */
+.faq { display: grid; gap: 0; border-top: 2px solid var(--grout); max-width: 860px; }
+.faq details { border-bottom: 2px solid var(--grout); }
+.faq summary { cursor: pointer; padding: 18px 40px 18px 0; font-weight: 700; font-size: 1.08rem; list-style: none; position: relative; }
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::after { content: "+"; position: absolute; right: 6px; top: 14px; font-family: var(--mono); font-size: 1.4rem; color: var(--glaze); }
+.faq details[open] summary::after { content: "−"; }
+.faq details p { padding: 0 0 20px; color: var(--muted); max-width: 70ch; }
+
+/* Quote */
+.quote { display: grid; grid-template-columns: 0.85fr 1.15fr; gap: 48px; align-items: start; }
+.contact { display: grid; gap: 18px; }
+.contact dl { margin: 0; display: grid; gap: 14px; }
+.contact dt { font-family: var(--mono); font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); }
+.contact dd { margin: 0; font-weight: 700; font-size: 1.1rem; }
+.qform { background: var(--surface); border: 3px solid var(--grout); border-radius: 6px; padding: 26px; display: grid; gap: 16px; }
+.qform .row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+.req { font-weight: 400; color: var(--muted); font-size: .85em; }
+.qform [aria-invalid="true"] { border-color: var(--glaze); box-shadow: 0 0 0 2px var(--glaze); }
+.sent.bad { background: rgba(255,80,32,.14); color: #ffb59a; }
+.sent a { color: inherit; }
+.sent { background: var(--fill-bg); color: var(--fill-fg); border-radius: var(--radius); padding: 14px 16px; font-weight: 600; }
+@media (max-width: 860px) { .quote { grid-template-columns: 1fr; } }
+@media (max-width: 520px) { .qform .row, .calc .row { grid-template-columns: 1fr; } }
+
+/* Footer */
+.foot { background: var(--night); color: var(--ink); border-top: 3px solid transparent; border-image: var(--ember) 1; padding-block: 44px calc(48px + env(safe-area-inset-bottom, 0px)); }
+.foot .wrap { display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 28px; }
+.foot a { color: var(--ink); }
+.foot .brand { color: var(--ink); }
+.foot p, .foot li { color: var(--ink); opacity: 0.8; font-size: 0.94rem; }
+.foot ul { list-style: none; padding: 0; margin: 8px 0 0; display: grid; gap: 6px; }
+.foot h3 { font-size: 1rem; font-stretch: 100%; text-transform: uppercase; letter-spacing: 0.08em; }
+.foot .base { grid-column: 1 / -1; border-top: 1px solid currentColor; padding-top: 18px; opacity: 0.7; font-size: 0.85rem; }
+@media (max-width: 760px) { .foot .wrap { grid-template-columns: 1fr; } }
+
+/* Trust strip */
+.trust { background: var(--ember); color: var(--on-glaze); }
+.trust .wrap { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 3px; padding-block: 0; }
+.trust div { padding: 18px 16px; display: grid; gap: 2px; min-width: 0; }
+.trust b { font-family: var(--display); font-stretch: 85%; font-size: 1.15rem; }
+.trust span { font-size: 0.88rem; opacity: 0.9; }
+.trust .fill { white-space: normal; }
+@media (max-width: 900px) { .trust .wrap { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+@media (max-width: 560px) { .trust .wrap { grid-template-columns: 1fr 1fr; } }
+.trust .fill { background: rgba(26, 11, 5, 0.18); color: var(--on-glaze); }
+
+/* Tile guide */
+.types { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.type { background: var(--surface); border: 2px solid var(--grout); border-radius: 6px; overflow: hidden; display: grid; grid-template-rows: auto 1fr; min-width: 0; }
+.swatch { height: 92px; display: grid; gap: 3px; padding: 3px; background: var(--grout); }
+.swatch i { display: block; border-radius: 1px; }
+.type-body { padding: 18px 20px 20px; display: grid; gap: 10px; align-content: start; }
+.type-body p { color: var(--muted); font-size: 0.95rem; }
+.type-meta { display: grid; grid-template-columns: auto 1fr; gap: 4px 12px; margin: 4px 0 0; font-size: 0.88rem; }
+.type-meta dt { font-family: var(--mono); font-size: 0.74rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted); padding-top: 2px; }
+.type-meta dd { margin: 0; font-weight: 600; }
+.price { font-variant-numeric: tabular-nums; color: var(--glaze); }
+@media (max-width: 900px) { .types { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 560px) { .types { grid-template-columns: 1fr; } }
+
+/* Patterns */
+.patterns { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; }
+.pattern { display: grid; gap: 8px; min-width: 0; }
+.pattern svg { width: 100%; height: auto; display: block; border-radius: 4px; border: 2px solid var(--grout); background: var(--grout); }
+.pattern h3 { font-size: 1.1rem; }
+.pattern p { color: var(--muted); font-size: 0.9rem; }
+.pattern .tag { font-family: var(--mono); font-size: 0.74rem; color: var(--brass); }
+@media (max-width: 900px) { .patterns { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+
+/* Prices */
+.price-grid { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 24px; align-items: start; }
+.table-wrap { overflow-x: auto; background: var(--surface); border: 2px solid var(--grout); border-radius: 6px; }
+table { border-collapse: collapse; width: 100%; font-size: 0.95rem; }
+caption { text-align: left; padding: 16px 18px 6px; font-family: var(--display); font-weight: 800; font-stretch: 90%; font-size: 1.25rem; color: var(--ink); }
+th, td { text-align: left; padding: 11px 18px; border-top: 1px solid var(--grout); vertical-align: top; }
+thead th { font-family: var(--mono); font-size: 0.74rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted); font-weight: 500; border-top: 0; }
+td.num { white-space: nowrap; font-weight: 700; font-variant-numeric: tabular-nums; color: var(--glaze); }
+td small { display: block; color: var(--muted); font-size: 0.84rem; }
+.stack { display: grid; gap: 24px; }
+.price-note { margin-top: 18px; color: var(--muted); font-size: 0.9rem; max-width: 80ch; }
+@media (max-width: 900px) { .price-grid { grid-template-columns: 1fr; } }
+
+/* Budget part of calculator */
+.result .budget { border-top: 1px solid currentColor; padding-top: 14px; }
+
+/* Finishes */
+.finish { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 3px; background: var(--grout); border: 3px solid var(--grout); border-radius: 6px; overflow: hidden; }
+.finish > div { background: var(--surface); padding: 24px; display: grid; gap: 10px; align-content: start; min-width: 0; }
+.finish p, .finish li { color: var(--muted); font-size: 0.95rem; }
+.finish ul { margin: 0; padding-left: 18px; display: grid; gap: 4px; }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.chip { display: inline-flex; align-items: center; gap: 6px; font-size: 0.82rem; font-weight: 600; border: 1px solid var(--grout); border-radius: 99px; padding: 3px 10px 3px 4px; color: var(--ink); }
+.chip i { width: 16px; height: 16px; border-radius: 50%; border: 1px solid rgba(0,0,0,0.15); }
+@media (max-width: 900px) { .finish { grid-template-columns: 1fr; } }
+
+/* Reviews */
+.reviews { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.review { border: 2px dashed var(--grout); border-radius: 6px; padding: 22px; display: grid; gap: 8px; color: var(--muted); background: var(--porcelain); }
+.review b { color: var(--ink); }
+@media (max-width: 760px) { .reviews { grid-template-columns: 1fr; } }
+
+.callbar { display: none; }
+@media (max-width: 760px) {
+  .callbar { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; position: fixed; left: 0; right: 0; bottom: 0; z-index: 8; background: var(--surface); border-top: 2px solid var(--glaze); padding: 10px max(16px, env(safe-area-inset-right, 0px)) calc(10px + env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px)); }
+  .callbar .btn { padding: 11px 10px; font-size: 0.95rem; box-shadow: none; }
+  .foot { padding-bottom: calc(110px + env(safe-area-inset-bottom, 0px)); }
+}
+
+.more { font-weight: 700; text-decoration: none; }
+.more:hover { text-decoration: underline; }
+
+/* Tile shop guide */
+.shop { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; align-items: start; }
+.shop > * { min-width: 0; }
+.label-card { background: #f3ede6; color: #1a120e; border-radius: 6px; padding: 20px 22px; font-family: var(--mono); font-size: 0.86rem; box-shadow: 0 0 0 3px var(--grout); display: grid; gap: 10px; }
+.label-card .lc-head { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; border-bottom: 2px solid #1a120e; padding-bottom: 8px; font-weight: 500; }
+.label-card .lc-head b { font-family: var(--display); font-stretch: 85%; font-size: 1.2rem; letter-spacing: 0.02em; }
+.label-card .lc-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px; }
+.label-card .lc-grid span { border: 1.5px solid #1a120e; border-radius: 3px; padding: 6px 8px; display: grid; gap: 2px; }
+.label-card .lc-grid small { font-size: 0.68rem; letter-spacing: 0.05em; text-transform: uppercase; opacity: 0.7; }
+.label-card .lc-grid span.hot { border-color: #c8300f; color: #c8300f; }
+.decode { margin: 0; display: grid; gap: 0; border-top: 2px solid var(--grout); }
+.decode div { display: grid; grid-template-columns: 150px 1fr; gap: 14px; padding: 12px 0; border-bottom: 2px solid var(--grout); }
+.decode dt { font-family: var(--mono); font-size: 0.8rem; color: var(--brass); padding-top: 2px; }
+.decode dd { margin: 0; color: var(--muted); font-size: 0.95rem; }
+.decode dd b { color: var(--ink); }
+.check-card { background: var(--surface); border: 2px solid var(--grout); border-radius: 6px; padding: 24px; display: grid; gap: 14px; }
+.check-card ol { margin: 0; padding-left: 20px; display: grid; gap: 8px; color: var(--muted); }
+.check-card ol b { color: var(--ink); }
+.promise { background: var(--ember); color: var(--on-glaze); border-radius: 6px; padding: 22px 24px; display: grid; gap: 6px; }
+.promise h3 { font-size: 1.5rem; }
+@media (max-width: 900px) { .shop { grid-template-columns: 1fr; } }
+@media (max-width: 480px) { .decode div { grid-template-columns: 1fr; gap: 2px; } .label-card .lc-grid { grid-template-columns: 1fr 1fr; } }
+
+/* Contracts */
+.contracts { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 32px; align-items: start; }
+.contracts > * { min-width: 0; }
+.sectors { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 3px; background: var(--grout); border: 3px solid var(--grout); border-radius: 6px; overflow: hidden; }
+.sectors div { background: var(--surface); padding: 18px 20px; display: grid; gap: 4px; }
+.sectors p { color: var(--muted); font-size: 0.92rem; }
+@media (max-width: 900px) { .contracts { grid-template-columns: 1fr; } }
+@media (max-width: 480px) { .sectors { grid-template-columns: 1fr; } }
+
+/* Loyalty */
+.loyal { display: grid; grid-template-columns: 0.85fr 1.15fr; gap: 40px; align-items: center; }
+.loyal > * { min-width: 0; }
+.loyal-card { aspect-ratio: 1.586; max-width: 440px; width: 100%; border-radius: 14px; background: var(--ember); color: var(--on-glaze); padding: 24px 26px; display: grid; align-content: space-between; box-shadow: 0 18px 50px rgba(200, 48, 15, 0.35), inset 0 0 0 1px rgba(255, 255, 255, 0.18); position: relative; overflow: hidden; }
+.loyal-card::after { content: ""; position: absolute; inset: 0; background: linear-gradient(rgba(26,11,5,0.10) 2px, transparent 2px) 0 0 / 36px 36px, linear-gradient(90deg, rgba(26,11,5,0.10) 2px, transparent 2px) 0 0 / 36px 36px; pointer-events: none; }
+.loyal-card .big { font-family: var(--display); font-weight: 900; font-stretch: 75%; font-size: clamp(3.6rem, 9vw, 5.4rem); line-height: 0.9; }
+.loyal-card .small { font-family: var(--mono); font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase; }
+.plan { list-style: none; margin: 0; padding: 0; display: grid; gap: 0; border-top: 2px solid var(--grout); }
+.plan li { display: grid; grid-template-columns: 120px 1fr; gap: 16px; padding: 16px 0; border-bottom: 2px solid var(--grout); }
+.plan .who { font-family: var(--mono); font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--brass); padding-top: 3px; }
+.plan p { color: var(--muted); }
+.plan b { color: var(--ink); }
+.both { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 28px; }
+.both div { background: var(--surface); border: 2px solid var(--grout); border-radius: 6px; padding: 20px; display: grid; gap: 8px; }
+.both ul { margin: 0; padding-left: 18px; color: var(--muted); display: grid; gap: 4px; }
+@media (max-width: 900px) { .loyal { grid-template-columns: 1fr; } }
+@media (max-width: 560px) { .both { grid-template-columns: 1fr; } .plan li { grid-template-columns: 1fr; gap: 4px; } }
+
+/* Areas, two groups */
+.area-groups { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+.area-groups h3 { margin-bottom: 12px; }
+@media (max-width: 760px) { .area-groups { grid-template-columns: 1fr; } }
+
+/* Calculator loyalty and copy */
+.check { display: flex; gap: 10px; align-items: flex-start; font-weight: 600; font-size: 0.95rem; }
+.check input { width: 20px; height: 20px; margin: 2px 0 0; accent-color: var(--glaze); flex: none; }
+.copy-btn { font: 700 0.92rem var(--body); background: var(--on-glaze); color: var(--ink); border: 0; border-radius: var(--radius); padding: 11px 16px; cursor: pointer; justify-self: start; }
+.copy-btn:hover { background: #000; }
+#r-save[hidden] { display: none; }
+</style>
+
+<header class="site-head">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="AR Tiling, back to top">
+      <svg class="mark" viewBox="0 0 56.56 36.77" aria-hidden="true" focusable="false"><g transform="translate(-3.72 -6.00)"><polygon fill="#ff5020" points="32.00,6.00 3.72,34.28 12.21,42.77 40.49,14.49"/><polygon fill="#ff9a3d" points="41.90,15.90 60.28,34.28 51.79,42.77 33.41,24.39"/><polygon fill="#c8300f" points="32.00,25.83 40.00,33.83 32.00,41.83 24.00,33.83"/></g></svg>
+      <span class="brand-txt"><b><span class="ar">AR</span> TILING</b><small>Tiling specialists</small></span>
+    </a>
+    <nav class="nav" aria-label="Main">
+      <a href="#services">Services</a>
+      <a href="tile-shop.html">Tile shop</a>
+      <a href="guides.html">Guides</a>
+      <a href="#prices">Prices</a>
+      <a href="#contracts">Contracts</a>
+      <a href="#loyalty">Save 10%</a>
+      <a href="#calculator">Calculator</a>
+      <a class="btn" href="#quote">Free quote</a>
+    </nav>
+    <details class="menu">
+      <summary>Menu</summary>
+      <nav aria-label="Main">
+        <a href="tile-shop.html">Tile shop: buy tiles</a>
+        <a href="guides.html">Tiling guides</a>
+        <a href="#services">Services</a>
+        <a href="#tiles">Tile guide</a>
+        <a href="#choosing">Choosing your tiles</a>
+        <a href="#patterns">Patterns</a>
+        <a href="#prices">Prices</a>
+        <a href="#work">Our work</a>
+        <a href="#process">How it works</a>
+        <a href="#contracts">UK-wide contracts</a>
+        <a href="#loyalty">Loyal customers save 10%</a>
+        <a href="#calculator">Tile and budget calculator</a>
+        <a href="#areas">Where we work</a>
+        <a href="#faq">FAQs</a>
+        <a href="#quote">Get a free quote</a>
+      </nav>
+    </details>
+  </div>
+</header>
+
+<main id="top">
+
+<section class="hero" aria-labelledby="hero-h">
+  <div class="wrap">
+    <div class="hero-copy">
+      <p class="label">AR Tiling · Tiling specialists · UK-wide</p>
+      <h1 id="hero-h">Tiling specialists. Laid right, <em>built to last.</em></h1>
+      <p class="lede">Homes across Greater Manchester and contracts anywhere in the UK. Bathrooms, wet rooms, kitchens, floors, outdoor and commercial. You choose the tiles, we fit them, whatever they are. No job is too difficult.</p>
+      <div class="hero-actions">
+        <a class="btn" href="#quote">Get a free quote</a>
+        <a class="btn ghost" href="tile-shop.html">Shop for tiles</a>
+      </div>
+      <ul class="facts">
+        <li>Free, no-obligation quotes</li>
+        <li>No job too difficult</li>
+        <li>Team ready, UK-wide</li>
+        <li>Loyal customers save 10%</li>
+      </ul>
+    </div>
+    <div>
+      <div class="wall" aria-hidden="true" id="wall"></div>
+      <div class="wall-cap"><span>Set out from the centre line</span><span>600 × 600 mm · 2 mm joints</span></div>
+    </div>
+  </div>
+</section>
+
+<div class="trust" aria-label="Why choose AR Tiling">
+  <div class="wrap">
+    <div><b>Free written quotes</b><span>A fixed price before any work starts</span></div>
+    <div><b>No job too difficult</b><span>Every tile, every size, every surface</span></div>
+    <div><b>UK-wide team</b><span>Homes locally, contracts nationwide</span></div>
+    <div><b>Guaranteed work</b><span><span class="fill">[e.g. 2-year workmanship guarantee]</span></span></div>
+    <div><b>Qualified &amp; insured</b><span>Fully insured, qualified tilers. <span class="fill">[£ cover]</span></span></div>
+  </div>
+</div>
+
+<section id="services" aria-labelledby="services-h">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="label">Services</p>
+      <h2 id="services-h">Every kind of tiling, start to finish</h2>
+      <p class="lede">From a splashback to a whole house of floors. Old tiles off, walls and floors prepared, new tiles laid, grouted and sealed.</p>
+    </div>
+    <div class="tiles">
+      <article class="tile">
+        <p class="spec">Walls · floors · en-suites</p>
+        <h3>Bathrooms</h3>
+        <p>Full bathroom and en-suite tiling, from floor to ceiling or half height.</p>
+        <ul><li>Feature walls and niches</li><li>Mitred and trimmed edges</li><li>Re-grouting and repairs</li></ul>
+      <a href="bathroom-tiling.html" class="more">More about bathrooms →</a>
+      </article>
+      <article class="tile">
+        <p class="spec">Tanked · fully waterproof</p>
+        <h3>Showers &amp; wet rooms</h3>
+        <p>Walk-in showers and wet rooms, waterproofed before a single tile goes on.</p>
+        <ul><li>Tanking membranes and kits</li><li>Cement board, not plasterboard</li><li>Falls to the drain on wet-room floors</li></ul>
+      <a href="wet-rooms-and-showers.html" class="more">More about showers & wet rooms →</a>
+      </article>
+      <article class="tile">
+        <p class="spec">Splashbacks · floors</p>
+        <h3>Kitchens</h3>
+        <p>Splashbacks cut neatly round sockets and worktops, and hard-wearing kitchen floors.</p>
+        <ul><li>Metro, mosaic and large-format</li><li>Clean cuts round sockets</li><li>Kitchen floors laid before or after units</li></ul>
+      <a href="kitchen-tiling.html" class="more">More about kitchens →</a>
+      </article>
+      <article class="tile">
+        <p class="spec">Porcelain · large-format · stone</p>
+        <h3>Floors</h3>
+        <p>Hallways, kitchens, conservatories and whole-house floors.</p>
+        <ul><li>Large-format tiles up to 1200 × 600 mm</li><li>Levelling systems for a flat finish</li><li>Over underfloor heating</li></ul>
+      <a href="floor-tiling.html" class="more">More about floors →</a>
+      </article>
+      <article class="tile">
+        <p class="spec">Patios · porches · steps</p>
+        <h3>Outdoor</h3>
+        <p>Outdoor porcelain for patios, porches, paths and steps, laid to shed water.</p>
+        <ul><li>20 mm outdoor porcelain</li><li>Frost-resistant adhesive and grout</li><li>Steps and edges finished neatly</li></ul>
+      <a href="outdoor-tiling.html" class="more">More about outdoor →</a>
+      </article>
+      <article class="tile">
+        <p class="spec">Shops · offices · hospitality</p>
+        <h3>Commercial</h3>
+        <p>Tiling for shops, offices, restaurants, salons and rented properties.</p>
+        <ul><li>Work planned around opening hours</li><li>Hard-wearing commercial tiles</li><li>Landlord and letting-agent jobs</li></ul>
+      <a href="commercial-tiling.html" class="more">More about commercial →</a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="tiles" class="band" aria-labelledby="tiles-h">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="label">Tile guide</p>
+      <h2 id="tiles-h">Every type of tile, and where it works</h2>
+      <p class="lede">Whatever you pick at the tile shop, we fit it. Here's every common type of tile, where it suits, and what it typically costs to buy. Prices are for the tiles only, per square metre.</p>
+    </div>
+    <div class="types">
+      <article class="type">
+        <div class="swatch" style="grid-template-columns:repeat(4,1fr)"><i style="background:#f4f2ee"></i><i style="background:#e9e6df"></i><i style="background:#f4f2ee"></i><i style="background:#e9e6df"></i></div>
+        <div class="type-body"><h3>Ceramic</h3><p>Glazed clay tiles. Light, easy to cut and the widest choice of colours. Best on walls and light-use floors.</p>
+          <dl class="type-meta"><dt>Best for</dt><dd>Bathroom and kitchen walls</dd><dt>Tiles from</dt><dd class="price">£10–£50 /m²</dd></dl></div>
+      </article>
+      <article class="type">
+        <div class="swatch" style="grid-template-columns:repeat(3,1fr)"><i style="background:#c9c7c2"></i><i style="background:#b9b7b1"></i><i style="background:#c9c7c2"></i></div>
+        <div class="type-body"><h3>Porcelain</h3><p>Denser and harder than ceramic, and soaks up almost no water. Strong enough for any floor, wet room or heated floor.</p>
+          <dl class="type-meta"><dt>Best for</dt><dd>Floors, showers, wet rooms</dd><dt>Tiles from</dt><dd class="price">£20–£90 /m²</dd></dl></div>
+      </article>
+      <article class="type">
+        <div class="swatch" style="grid-template-columns:2fr 1fr"><i style="background:#8f8c86"></i><i style="background:#a3a09a"></i></div>
+        <div class="type-body"><h3>Large-format porcelain</h3><p>Tiles from 600 × 600 mm up to 1200 × 600 mm and bigger slabs. Fewer grout lines and a clean, modern look. Needs a very flat surface and a levelling system.</p>
+          <dl class="type-meta"><dt>Best for</dt><dd>Open-plan floors, feature walls</dd><dt>Tiles from</dt><dd class="price">£35–£150 /m²</dd></dl></div>
+      </article>
+      <article class="type">
+        <div class="swatch" style="grid-template-columns:repeat(4,1fr);grid-template-rows:1fr 1fr"><i style="background:#ffffff"></i><i style="background:#f6f6f6"></i><i style="background:#ffffff"></i><i style="background:#f6f6f6"></i><i style="background:#f6f6f6"></i><i style="background:#ffffff"></i><i style="background:#f6f6f6"></i><i style="background:#ffffff"></i></div>
+        <div class="type-body"><h3>Metro</h3><p>The classic 200 × 100 mm brick tile, flat or bevelled. Timeless on kitchen splashbacks and bathroom walls.</p>
+          <dl class="type-meta"><dt>Best for</dt><dd>Splashbacks, period homes</dd><dt>Tiles from</dt><dd class="price">£10–£50 /m²</dd></dl></div>
+      </article>
+      <article class="type">
+        <div class="swatch" style="grid-template-columns:repeat(8,1fr);grid-template-rows:repeat(3,1fr);gap:2px"><i style="background:#2c6f8a"></i><i style="background:#3b8aa6"></i><i style="background:#2c6f8a"></i><i style="background:#5aa3bb"></i><i style="background:#3b8aa6"></i><i style="background:#2c6f8a"></i><i style="background:#5aa3bb"></i><i style="background:#3b8aa6"></i><i style="background:#5aa3bb"></i><i style="background:#2c6f8a"></i><i style="background:#3b8aa6"></i><i style="background:#2c6f8a"></i><i style="background:#5aa3bb"></i><i style="background:#3b8aa6"></i><i style="background:#2c6f8a"></i><i style="background:#5aa3bb"></i><i style="background:#3b8aa6"></i><i style="background:#5aa3bb"></i><i style="background:#2c6f8a"></i><i style="background:#3b8aa6"></i><i style="background:#2c6f8a"></i><i style="background:#5aa3bb"></i><i style="background:#3b8aa6"></i><i style="background:#2c6f8a"></i></div>
+        <div class="type-body"><h3>Mosaic</h3><p>Small tiles on a mesh sheet, in glass, ceramic, porcelain or stone. They bend round curves and grip well on shower floors.</p>
+          <dl class="type-meta"><dt>Best for</dt><dd>Shower floors, niches, features</dd><dt>Tiles from</dt><dd class="price">£20–£150 /m²</dd></dl></div>
+      </article>
+      <article class="type">
+        <div class="swatch" style="grid-template-columns:1fr 1fr"><i style="background:linear-gradient(135deg,#f3f2ef 0 40%,#d9d8d4 41% 43%,#f3f2ef 44%)"></i><i style="background:linear-gradient(60deg,#efeeea 0 55%,#cfcdc8 56% 58%,#efeeea 59%)"></i></div>
+        <div class="type-body"><h3>Marble</h3><p>Natural stone such as Carrara and Calacatta, polished or honed. Beautiful, but it must be sealed and doesn't like acidic cleaners.</p>
+          <dl class="type-meta"><dt>Best for</dt><dd>Luxury bathrooms, feature walls</dd><dt>Tiles from</dt><dd class="price">£60–£200+ /m²</dd></dl></div>
+      </article>
+      <article class="type">
+        <div class="swatch" style="grid-template-columns:3fr 2fr 3fr"><i style="background:#d8c7a8"></i><i style="background:#cdb995"></i><i style="background:#3d4144"></i></div>
+        <div class="type-body"><h3>Travertine, limestone &amp; slate</h3><p>Natural stone with a warm or rugged look. Every tile is different. Sealed when laid, and resealed every so often.</p>
+          <dl class="type-meta"><dt>Best for</dt><dd>Hallways, kitchens, character homes</dd><dt>Tiles from</dt><dd class="price">£30–£100+ /m²</dd></dl></div>
+      </article>
+      <article class="type">
+        <div class="swatch" style="grid-template-columns:repeat(4,1fr)"><i style="background:#2f6f63"></i><i style="background:#3a7c6f"></i><i style="background:#2a6559"></i><i style="background:#3f8475"></i></div>
+        <div class="type-body"><h3>Zellige &amp; handmade</h3><p>Hand-glazed tiles with uneven edges and colour that shifts tile to tile. Laid with tight joints for that handmade shimmer.</p>
+          <dl class="type-meta"><dt>Best for</dt><dd>Splashbacks, statement walls</dd><dt>Price</dt><dd class="price">Premium: quoted per job</dd></dl></div>
+      </article>
+      <article class="type">
+        <div class="swatch" style="grid-template-columns:repeat(4,1fr)"><i style="background:conic-gradient(#1f3d5c 0 25%,#f2efe6 0 50%,#1f3d5c 0 75%,#f2efe6 0)"></i><i style="background:conic-gradient(#f2efe6 0 25%,#b2453a 0 50%,#f2efe6 0 75%,#b2453a 0)"></i><i style="background:conic-gradient(#1f3d5c 0 25%,#f2efe6 0 50%,#1f3d5c 0 75%,#f2efe6 0)"></i><i style="background:conic-gradient(#f2efe6 0 25%,#b2453a 0 50%,#f2efe6 0 75%,#b2453a 0)"></i></div>
+        <div class="type-body"><h3>Patterned &amp; Victorian</h3><p>Encaustic-style and Victorian geometric floors, usually in hard-wearing porcelain. Perfect for hallways and porches.</p>
+          <dl class="type-meta"><dt>Best for</dt><dd>Hallways, porches, utility rooms</dd><dt>Price</dt><dd class="price">Varies by design</dd></dl></div>
+      </article>
+      <article class="type">
+        <div class="swatch" style="grid-template-rows:repeat(3,1fr);grid-template-columns:1fr"><i style="background:linear-gradient(90deg,#9a7350,#a87f5a 40%,#8f6a48)"></i><i style="background:linear-gradient(90deg,#a87f5a,#946d4b 60%,#a87f5a)"></i><i style="background:linear-gradient(90deg,#8f6a48,#a87f5a 50%,#9a7350)"></i></div>
+        <div class="type-body"><h3>Wood-effect porcelain</h3><p>Long planks that look like timber but are fully waterproof and fine over underfloor heating. Great in herringbone.</p>
+          <dl class="type-meta"><dt>Best for</dt><dd>Kitchens, bathrooms, living areas</dd><dt>Tiles from</dt><dd class="price">£20–£90 /m²</dd></dl></div>
+      </article>
+      <article class="type">
+        <div class="swatch" style="grid-template-columns:3fr 2fr"><i style="background:#9b9790"></i><i style="background:#88847d"></i></div>
+        <div class="type-body"><h3>Outdoor 20 mm porcelain</h3><p>Thick, frost-proof porcelain slabs with a slip-resistant face. Barely stains and needs no sealing.</p>
+          <dl class="type-meta"><dt>Best for</dt><dd>Patios, paths, porches</dd><dt>Tiles from</dt><dd class="price">£20–£35 /m²</dd></dl></div>
+      </article>
+      <article class="type">
+        <div class="swatch" style="grid-template-columns:1fr 1fr"><i style="background:radial-gradient(circle at 20% 30%,#c0563f 0 3px,transparent 4px),radial-gradient(circle at 70% 60%,#2f5d7a 0 3px,transparent 4px),radial-gradient(circle at 45% 80%,#d9a441 0 2px,transparent 3px),#ecebe7"></i><i style="background:radial-gradient(circle at 60% 25%,#2f5d7a 0 3px,transparent 4px),radial-gradient(circle at 30% 65%,#c0563f 0 2px,transparent 3px),radial-gradient(circle at 80% 80%,#9a9a9a 0 3px,transparent 4px),#ecebe7"></i></div>
+        <div class="type-body"><h3>Terrazzo</h3><p>Chips of stone or glass set in a base, or a porcelain tile made to look like it. Playful and very hard-wearing.</p>
+          <dl class="type-meta"><dt>Best for</dt><dd>Kitchens, bathrooms, commercial</dd><dt>Price</dt><dd class="price">Varies by make</dd></dl></div>
+      </article>
+      <article class="type">
+        <div class="swatch" style="grid-template-columns:1fr"><i style="background:linear-gradient(120deg,#e9e4de 0 30%,#d8d1c9 31% 33%,#ebe6e0 34% 70%,#cdc5bc 71% 72%,#e9e4de 73%)"></i></div>
+        <div class="type-body"><h3>Porcelain slabs</h3><p>Huge sheets up to around 3200 × 1600 mm, often only 6 mm thick. Almost no grout lines: whole walls, showers and worktops in a single piece.</p>
+          <dl class="type-meta"><dt>Best for</dt><dd>Shower walls, feature walls, floors</dd><dt>Price</dt><dd class="price">Quoted per job</dd></dl></div>
+      </article>
+      <article class="type">
+        <div class="swatch" style="grid-template-columns:repeat(6,1fr);gap:2px"><i style="background:#ff9a3d;opacity:.85"></i><i style="background:#ff5020;opacity:.8"></i><i style="background:#c8300f;opacity:.85"></i><i style="background:#ff5020;opacity:.9"></i><i style="background:#ff9a3d;opacity:.8"></i><i style="background:#c8300f;opacity:.9"></i></div>
+        <div class="type-body"><h3>Glass</h3><p>Glass mosaics and tiles that catch the light. Cut with special blades and fixed with white adhesive so the colour stays true.</p>
+          <dl class="type-meta"><dt>Best for</dt><dd>Splashbacks, feature strips, pools</dd><dt>Price</dt><dd class="price">Varies by make</dd></dl></div>
+      </article>
+      <article class="type">
+        <div class="swatch" style="grid-template-columns:repeat(4,1fr)"><i style="background:#9b3b26"></i><i style="background:#8c3220"></i><i style="background:#a2422b"></i><i style="background:#8f3523"></i></div>
+        <div class="type-body"><h3>Quarry &amp; terracotta</h3><p>Unglazed clay floor tiles, the traditional red farmhouse floor. Laid on a solid bed and sealed to stop stains.</p>
+          <dl class="type-meta"><dt>Best for</dt><dd>Kitchens, porches, period homes</dd><dt>Price</dt><dd class="price">Varies by make</dd></dl></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="patterns" aria-labelledby="patterns-h">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="label">Patterns</p>
+      <h2 id="patterns-h">The same tile, eight different looks</h2>
+      <p class="lede">How tiles are laid changes a room as much as the tile itself. Patterns with more cuts take longer, so they cost a little more to lay.</p>
+    </div>
+    <div class="patterns" id="patterns-grid"></div>
+  </div>
+</section>
+
+<section id="choosing" class="band" aria-labelledby="choosing-h">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="label">Choosing your tiles</p>
+      <h2 id="choosing-h">You pick them at the tile shop. We make sure they're right.</h2>
+      <p class="lede">Most customers choose their own tiles at a tile shop. Here's everything to check before you buy, so the tiles suit the room, the right amount arrives, and the job goes perfectly.</p>
+      <p><a class="btn" href="tile-shop.html">Or buy from our tile shop</a></p>
+    </div>
+    <div class="shop">
+      <div style="display:grid;gap:20px">
+        <div class="label-card" aria-label="Example of a tile box label">
+          <div class="lc-head"><b>PORCELAIN · MATT</b><span>Example box label</span></div>
+          <div class="lc-grid">
+            <span><small>Size</small>600 × 600 mm</span>
+            <span><small>Thickness</small>9 mm</span>
+            <span class="hot"><small>Edge</small>Rectified</span>
+            <span class="hot"><small>Wear</small>PEI 4</span>
+            <span class="hot"><small>Slip</small>R10</span>
+            <span><small>Absorption</small>≤ 0.5%</span>
+            <span class="hot"><small>Shade</small>07</span>
+            <span class="hot"><small>Batch</small>2614B</span>
+            <span><small>Box covers</small>1.44 m²</span>
+          </div>
+        </div>
+        <dl class="decode">
+          <div><dt>Rectified</dt><dd><b>Edges ground perfectly square,</b> so tiles can go with a tight 2 mm joint. Non-rectified tiles need wider grout lines.</dd></div>
+          <div><dt>PEI 1–5</dt><dd><b>How hard-wearing the glaze is.</b> PEI 1–2 for walls only, PEI 3 for home floors, PEI 4–5 for hallways, kitchens and commercial floors.</dd></div>
+          <div><dt>R9–R13</dt><dd><b>Slip rating.</b> R9 is fine for dry floors, R10–R11 for bathrooms, kitchens and outdoors, R12–R13 for commercial kitchens and ramps.</dd></div>
+          <div><dt>Absorption</dt><dd><b>How much water the tile soaks up.</b> 0.5% or less is porcelain: best for showers, outdoors and frost.</dd></div>
+          <div><dt>Shade + batch</dt><dd><b>The most important thing on the box.</b> Every box must have the same shade and batch number, or the colour can change halfway across the room.</dd></div>
+          <div><dt>m² per box</dt><dd><b>How many boxes to buy.</b> Divide the "including extra" figure from our calculator by this number and round up.</dd></div>
+        </dl>
+      </div>
+      <div style="display:grid;gap:20px">
+        <div class="check-card">
+          <h3>Your tile shop checklist</h3>
+          <ol>
+            <li><b>Measure first.</b> Use our <a href="#calculator">calculator</a> for the area and how many tiles, and take the figures with you.</li>
+            <li><b>Wall or floor?</b> Floor tiles can go on walls, but wall tiles must never go on floors.</li>
+            <li><b>Check the ratings</b> on the box label: PEI for wear, R for slip, absorption for wet areas.</li>
+            <li><b>Buy 10% extra,</b> or 15% for herringbone, chevron or diagonal patterns.</li>
+            <li><b>Same shade and batch</b> on every box. Ask the shop to check before they load the van.</li>
+            <li><b>Pick trims and grout</b> to match, or let us advise on them.</li>
+            <li><b>Delivery before day one.</b> Have everything on site before we start.</li>
+            <li><b>Keep a spare box</b> for future repairs.</li>
+          </ol>
+        </div>
+        <div class="promise">
+          <h3>Send us the tile before you buy. We'll check it for free.</h3>
+          <p>Send the tile's name, a photo of the box label or a link, and we'll tell you if it suits the room, what it needs underneath and how many boxes to order. No tile is too difficult for us to fit.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="work" class="band" aria-labelledby="work-h">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="label">Our work</p>
+      <h2 id="work-h">Recent jobs</h2>
+      <p class="lede">A few finished jobs. The best way to judge a tiler is the straightness of the lines and the neatness of the cuts.</p>
+    </div>
+    <div class="gallery">
+      <div class="shot big"><div><b>Photo space 1</b>Best finished job: a full bathroom or wet room</div></div>
+      <div class="shot"><div><b>Photo space 2</b>Shower or wet room</div></div>
+      <div class="shot"><div><b>Photo space 3</b>Kitchen splashback</div></div>
+      <div class="shot"><div><b>Photo space 4</b>Large-format floor</div></div>
+      <div class="shot"><div><b>Photo space 5</b>Outdoor patio or porch</div></div>
+      <div class="shot"><div><b>Photo space 6</b>Close-up of neat cuts</div></div>
+    </div>
+    <p class="note">These spaces are ready for AR Tiling's own photos.</p>
+  </div>
+</section>
+
+<section id="process" aria-labelledby="process-h">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="label">How it works</p>
+      <h2 id="process-h">How a job runs</h2>
+    </div>
+    <ol class="steps">
+      <li><h3>Get in touch</h3><p>Send a few photos and the rough size of the room, or ask for a visit.</p></li>
+      <li><h3>Measure and quote</h3><p>Everything measured, then a clear written quote with the price and how long it takes.</p></li>
+      <li><h3>Prepare</h3><p>Old tiles off, walls boarded, floors levelled and wet areas tanked. This is what makes tiles last.</p></li>
+      <li><h3>Set out and tile</h3><p>Lines set out from the centre so cuts are even at both ends, then every tile laid true.</p></li>
+      <li><h3>Grout and seal</h3><p>Grouted, silicone sealed where it meets baths, trays and worktops, then cleaned down.</p></li>
+      <li><h3>Walk round</h3><p>A final look together before the job is signed off, with the mess cleared away.</p></li>
+    </ol>
+  </div>
+</section>
+
+<section class="band" aria-labelledby="under-h">
+  <div class="wrap under">
+    <div class="sec-head">
+      <p class="label">Done properly</p>
+      <h2 id="under-h">What goes under the tiles matters most</h2>
+      <p class="lede">Most failed tiling isn't the tiles. It's what's underneath: plasterboard in a shower, too little adhesive, no room for movement. Every layer is done right here.</p>
+    </div>
+    <div class="layers" aria-label="The layers of a tiled shower wall, from the surface in">
+      <div class="layer top"><span class="what">Tile + grout</span><p>Set out level, with even joints and cuts at both ends.</p></div>
+      <div class="layer"><span class="what">Adhesive</span><p>Full coverage on floors and large tiles, spread with the right notched trowel, so no hollow spots.</p></div>
+      <div class="layer"><span class="what">Tanking</span><p>A waterproof membrane in showers and wet rooms, sealed at every corner and pipe.</p></div>
+      <div class="layer"><span class="what">Backer board</span><p>Cement or foam board in wet areas, never plain plasterboard.</p></div>
+      <div class="layer"><span class="what">Movement joints</span><p>Gaps left at the edges and over large floors so tiles don't crack as the building moves.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="prices" aria-labelledby="prices-h">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="label">Prices</p>
+      <h2 id="prices-h">Price guide</h2>
+      <p class="lede">Typical 2026 UK prices outside London, so you know roughly what to budget. Every job still gets its own fixed, written quote after measuring.</p>
+    </div>
+    <div class="price-grid">
+      <div class="table-wrap">
+        <table>
+          <caption>Laying tiles (labour, per m²)</caption>
+          <thead><tr><th scope="col">Work</th><th scope="col">Price</th></tr></thead>
+          <tbody>
+            <tr><td>Wall tiling<small>Ceramic or porcelain, standard sizes</small></td><td class="num">£25–£40</td></tr>
+            <tr><td>Floor tiling<small>Ceramic or porcelain, standard sizes</small></td><td class="num">£25–£45</td></tr>
+            <tr><td>Large-format tiles<small>600 × 600 mm and bigger, with levelling system</small></td><td class="num">£35–£55</td></tr>
+            <tr><td>Mosaic and small tiles<small>Metro, mosaic sheets, under 100 mm</small></td><td class="num">£40–£70</td></tr>
+            <tr><td>Natural stone<small>Marble, travertine, limestone, slate</small></td><td class="num">£40–£65</td></tr>
+            <tr><td>Herringbone, chevron or diagonal<small>More cuts and setting out</small></td><td class="num">+20–30%</td></tr>
+            <tr><td>Outdoor porcelain<small>Laid on a prepared base</small></td><td class="num">£35–£60</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="stack">
+        <div class="table-wrap">
+          <table>
+            <caption>Preparation and extras</caption>
+            <thead><tr><th scope="col">Work</th><th scope="col">Price</th></tr></thead>
+            <tbody>
+              <tr><td>Removing old wall tiles</td><td class="num">£10–£20 /m²</td></tr>
+              <tr><td>Removing old floor tiles</td><td class="num">£15–£30 /m²</td></tr>
+              <tr><td>Tanking showers and wet rooms</td><td class="num">£15–£30 /m²</td></tr>
+              <tr><td>Floor levelling compound</td><td class="num">£10–£20 /m²</td></tr>
+              <tr><td>Adhesive, grout and trims</td><td class="num">£10–£20 /m²</td></tr>
+              <tr><td>Re-grouting</td><td class="num">£15–£35 /m²</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <caption>Typical jobs</caption>
+            <thead><tr><th scope="col">Job</th><th scope="col">Price</th></tr></thead>
+            <tbody>
+              <tr><td>Kitchen splashback</td><td class="num">£150–£400</td></tr>
+              <tr><td>Re-grout a bathroom</td><td class="num">from £350</td></tr>
+              <tr><td>Standard bathroom, walls and floor<small>Labour, materials and tanking; tiles extra</small></td><td class="num">£1,000–£3,000</td></tr>
+              <tr><td>Wet room or walk-in shower<small>Fully tanked</small></td><td class="num">£1,200–£2,500</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <p class="price-note">Prices depend on the room, the tiles and what's underneath. Small jobs have a minimum charge of around £150. Loyal customers get <a href="#loyalty">10% off</a>. Commercial contracts are priced per project. Use the <a href="#calculator">calculator</a> below for a rough budget, then <a href="#quote">ask for a free quote</a>. <span class="fill">[AR Tiling: check these match your own prices before the site goes live]</span></p>
+  </div>
+</section>
+
+<section class="band" aria-labelledby="finish-h">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="label">Finishing touches</p>
+      <h2 id="finish-h">Grout, trims and aftercare</h2>
+      <p class="lede">The details people notice: the colour of the grout, the edges, and how the tiles look in five years.</p>
+    </div>
+    <div class="finish">
+      <div>
+        <h3>Grout</h3>
+        <p>Picked to match or contrast with your tiles.</p>
+        <div class="chips" aria-label="Common grout colours">
+          <span class="chip"><i style="background:#ffffff"></i>Bright white</span>
+          <span class="chip"><i style="background:#c9cacb"></i>Silver grey</span>
+          <span class="chip"><i style="background:#8a8c8e"></i>Mid grey</span>
+          <span class="chip"><i style="background:#3f4144"></i>Anthracite</span>
+          <span class="chip"><i style="background:#141414"></i>Black</span>
+          <span class="chip"><i style="background:#d8ccb4"></i>Beige</span>
+        </div>
+        <ul><li>Standard cement grout for most walls and floors</li><li>Epoxy grout for showers and worktops: waterproof and stain-proof</li><li>Flexible grout over underfloor heating and timber floors</li></ul>
+      </div>
+      <div>
+        <h3>Edges and trims</h3>
+        <p>Every exposed edge finished cleanly, with a trim or a mitred corner.</p>
+        <ul><li>Chrome, brushed steel, matt black or brushed brass</li><li>White or coloured trims to blend in</li><li>Mitred edges: tiles cut at 45° for a trim-free corner</li><li>Silicone sealed where tiles meet baths, trays and worktops</li></ul>
+      </div>
+      <div>
+        <h3>Aftercare</h3>
+        <p>Simple care keeps tiles looking new.</p>
+        <ul><li>Leave new grout and silicone at least 24 hours before using a shower</li><li>Clean with a pH-neutral cleaner; avoid bleach and acid on stone and grout</li><li>Natural stone resealed every one to two years</li><li>Re-silicone when it starts to mark or lift</li></ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contracts" aria-labelledby="contracts-h">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="label">Commercial &amp; contracts</p>
+      <h2 id="contracts-h">UK-wide contracts. A team ready to go.</h2>
+      <p class="lede">From one shop floor to hundreds of bathrooms across a development, our team delivers anywhere in the UK, on programme and to specification.</p>
+    </div>
+    <div class="contracts">
+      <div class="sectors">
+        <div><h3>Housebuilders &amp; developers</h3><p>Bathrooms, en-suites and kitchens plot by plot, to your programme.</p></div>
+        <div><h3>Housing associations</h3><p>Planned refurbishments, voids and adaptations, including wet rooms.</p></div>
+        <div><h3>Hotels &amp; student living</h3><p>Repeat bathroom pods and en-suites finished to one standard.</p></div>
+        <div><h3>Retail &amp; hospitality</h3><p>Shop fit-outs, restaurants and bars, worked around opening hours.</p></div>
+        <div><h3>Offices &amp; public buildings</h3><p>Washrooms, kitchens, receptions and hard-wearing floors.</p></div>
+        <div><h3>Multi-site roll-outs</h3><p>The same finish across sites up and down the country.</p></div>
+      </div>
+      <div class="check-card">
+        <h3>How we run a contract</h3>
+        <ol>
+          <li><b>One contact</b> from tender to handover.</li>
+          <li><b>A team sized to the job:</b> <span class="fill">[number of tilers]</span> ready to start.</li>
+          <li><b>RAMS and method statements</b> before we arrive on site.</li>
+          <li><b>Qualified, fully insured tilers</b> working to BS 5385, the British Standard for tiling.</li>
+          <li><b>Programme agreed up front,</b> with nights and weekends where needed.</li>
+          <li><b>Snagging and sign-off</b> plot by plot, with photos.</li>
+          <li><b>Clear valuations</b> and invoices at each stage.</li>
+        </ol>
+        <a class="btn" href="#quote">Send us a project to price</a>
+        <p class="note" style="margin:0">Send drawings, a tile schedule and your programme for a fixed contract price.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="loyalty" class="band" aria-labelledby="loyalty-h">
+  <div class="wrap">
+    <div class="loyal">
+      <div class="loyal-card" aria-label="AR Tiling loyal customer card: 10% off every job after your first">
+        <div style="display:flex;justify-content:space-between;gap:12px;position:relative;z-index:1"><span class="small">AR Tiling</span><span class="small">Loyal customer</span></div>
+        <div style="position:relative;z-index:1"><div class="big">10% OFF</div><span class="small">Every job after your first. For good.</span></div>
+      </div>
+      <div style="display:grid;gap:18px">
+        <div class="sec-head" style="margin:0">
+          <p class="label">Loyalty plan</p>
+          <h2 id="loyalty-h">Come back to us and save 10% on every job</h2>
+          <p class="lede">The plan is simple. Your first job earns you loyal-customer pricing, and it never runs out.</p>
+        </div>
+        <ul class="plan">
+          <li><span class="who">First job</span><p><b>Full quote, done properly.</b> From then on you're an AR Tiling loyal customer.</p></li>
+          <li><span class="who">Every job after</span><p><b>10% off our price, every time.</b> The next room, the kitchen, the patio, the rental flat.</p></li>
+          <li><span class="who">Recommend us</span><p><b>Your friend gets 10% off their first job</b> when they mention your name, and they become a loyal customer too.</p></li>
+          <li><span class="who">Landlords</span><p><b>One account for all your properties.</b> After the first job, every property gets the 10%.</p></li>
+        </ul>
+      </div>
+    </div>
+    <div class="both">
+      <div><h3>Why it works for you</h3><ul><li>You save on every job you ever book with us</li><li>The same team who knows your home and your tiles</li><li>Priority booking for loyal customers</li></ul></div>
+      <div><h3>Why it works for us</h3><ul><li>Repeat work from people we already know</li><li>Fewer adverts, so we pass the saving to you</li><li>Recommendations from happy customers, our best advert</li></ul></div>
+    </div>
+    <p class="price-note">The 10% comes off AR Tiling's price for labour and the materials we supply. It doesn't apply to tiles you buy yourself, can't be added to other offers, and commercial contracts are priced separately. <span class="fill">[AR Tiling: confirm these terms]</span></p>
+  </div>
+</section>
+
+<section id="calculator" class="band" aria-labelledby="calc-h">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="label">Tile calculator</p>
+      <h2 id="calc-h">How many tiles, and roughly what will it cost?</h2>
+      <p class="lede">Enter the size of the wall or floor and the tile you like. You'll get the number of tiles to buy and a rough budget. Your quote gives the exact figure once the room is measured.</p>
+    </div>
+    <div class="calc">
+      <form id="calc-form" novalidate>
+        <div class="row">
+          <div class="field"><label for="c-w">Width (metres)</label><input id="c-w" type="number" inputmode="decimal" min="0" step="0.01" value="2.4"></div>
+          <div class="field"><label for="c-l">Length or height (metres)</label><input id="c-l" type="number" inputmode="decimal" min="0" step="0.01" value="1.8"></div>
+        </div>
+        <div class="field">
+          <label for="c-tile">Tile size</label>
+          <select id="c-tile">
+            <option value="100x100">100 × 100 mm (mosaic-style)</option>
+            <option value="200x100">200 × 100 mm (metro)</option>
+            <option value="300x300">300 × 300 mm</option>
+            <option value="600x300" selected>600 × 300 mm</option>
+            <option value="600x600">600 × 600 mm</option>
+            <option value="1200x600">1200 × 600 mm (large-format)</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="c-type">Type of tile</label>
+          <select id="c-type">
+            <option value="ceramic">Ceramic</option>
+            <option value="porcelain" selected>Porcelain</option>
+            <option value="large">Large-format porcelain</option>
+            <option value="mosaic">Mosaic or metro</option>
+            <option value="stone">Travertine, limestone or slate</option>
+            <option value="marble">Marble</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="c-lay">Laying pattern</label>
+          <select id="c-lay">
+            <option value="0.10" selected>Straight or brick bond (add 10% for cuts)</option>
+            <option value="0.15">Diagonal or herringbone (add 15% for cuts)</option>
+          </select>
+          <small>Extra tiles cover cuts, breakages and a few spares for future repairs.</small>
+        </div>
+        <label class="check" for="c-loyal"><input id="c-loyal" type="checkbox"> I'm a returning AR Tiling customer (10% off our price)</label>
+      </form>
+      <div class="result" aria-live="polite">
+        <dl>
+          <div><dt>Area to tile</dt><dd id="r-area">4.32 m²</dd></div>
+          <div><dt>Tiles to buy</dt><dd id="r-tiles">27 tiles</dd></div>
+          <div><dt>Including extra</dt><dd id="r-m2">4.75 m²</dd></div>
+          <div class="budget"><dt>Rough budget</dt><dd id="r-budget">£390–£770</dd></div>
+        </dl>
+        <p id="r-split">Tiles £100–£430 · adhesive and grout £40–£90 · labour £110–£200</p>
+        <p id="r-save" hidden></p>
+        <button class="copy-btn" type="button" id="copy-list">Copy my tile shop list</button>
+        <p>A guide only, for a straightforward job. Removing old tiles, tanking or levelling are extra. Buy all your tiles from the same shade and batch so the colour matches.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="areas" class="band" aria-labelledby="areas-h">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="label">Where we work</p>
+      <h2 id="areas-h">Based in Greater Manchester. Working UK-wide.</h2>
+      <p class="lede">Homes and small businesses across Greater Manchester, and commercial contracts anywhere in the UK.</p>
+    </div>
+    <div class="area-groups">
+      <div><h3>Homes and businesses</h3><ul class="areas">
+        <li>Manchester</li><li>Salford</li><li>Stockport</li><li>Trafford</li><li>Tameside</li><li>Oldham</li><li>Rochdale</li><li>Bury</li><li>Bolton</li><li>Wigan</li>
+      </ul></div>
+      <div><h3>Contracts, UK-wide</h3><ul class="areas">
+        <li>North West</li><li>Yorkshire</li><li>North East</li><li>Midlands</li><li>London &amp; South East</li><li>South West</li><li>Wales</li><li>Scotland</li><li>Northern Ireland</li>
+      </ul></div>
+    </div>
+  </div>
+</section>
+
+<section id="reviews" aria-labelledby="reviews-h">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="label">Reviews</p>
+      <h2 id="reviews-h">What customers say</h2>
+    </div>
+    <div class="reviews">
+      <div class="review"><b>Review space 1</b><p>A real review from a customer, with their first name and area.</p></div>
+      <div class="review"><b>Review space 2</b><p>A real review from a customer, with their first name and area.</p></div>
+      <div class="review"><b>Review space 3</b><p>A real review from a customer, with their first name and area.</p></div>
+    </div>
+    <p class="note">Ready for real reviews from AR Tiling's customers, for example copied from Google or Facebook with their permission.</p>
+  </div>
+</section>
+
+<section id="faq" class="band" aria-labelledby="faq-h">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="label">FAQs</p>
+      <h2 id="faq-h">Questions people ask</h2>
+    </div>
+    <div class="faq">
+      <details open><summary>How much does tiling cost?</summary><p>It depends on the size of the area, the tiles you choose and how much preparation is needed underneath. Send a few photos and rough measurements for a free, no-obligation quote.</p></details>
+      <details><summary>Do you supply the tiles?</summary><p>Most customers choose their own tiles at a tile shop. Send us the tile's name or a photo of the box first and we'll check it suits the job and tell you how many boxes to buy, free. <span class="fill">[Confirm: can AR Tiling also supply tiles?]</span></p></details>
+      <details><summary>Is any tile or job too difficult?</summary><p>No. Large-format slabs, natural stone, mosaics, glass, herringbone, wet rooms, outdoor porcelain: whatever you choose, we fit it.</p></details>
+      <details><summary>Do you work outside Manchester?</summary><p>Yes. We do homes and small businesses across Greater Manchester, and commercial contracts anywhere in the UK with our own team.</p></details>
+      <details><summary>How does the 10% loyalty discount work?</summary><p>After your first job, every job you book with us is 10% off our price for labour and the materials we supply. Recommend a friend and they get 10% off their first job too. It doesn't apply to tiles you buy yourself or to commercial contracts, which are priced per project.</p></details>
+      <details><summary>Can you take the old tiles off?</summary><p>Yes. Old tiles are removed and the walls or floor prepared, so the new tiles go onto a sound, flat surface.</p></details>
+      <details><summary>How long will my job take?</summary><p>It depends on the size and the preparation. Your quote says how many days the job will take before any work starts.</p></details>
+      <details><summary>Can you tile over underfloor heating?</summary><p>Yes, using flexible adhesive and grout made for heated floors, with the heating off while it sets.</p></details>
+      <details><summary>Do you do small jobs?</summary><p>Yes: splashbacks, re-grouting, replacing cracked tiles and other small repairs as well as full rooms. Small jobs have a minimum charge of around £150.</p></details>
+      <details><summary>Ceramic or porcelain: which should I choose?</summary><p>Ceramic is great for walls and costs less. Porcelain is harder and soaks up almost no water, so it's the better choice for floors, showers, wet rooms and anywhere with underfloor heating.</p></details>
+      <details><summary>Can you tile over my old tiles?</summary><p>Sometimes, if the old tiles are flat and stuck down firmly. In showers, wet rooms and on most floors it's better to take them off, so the new tiles bond properly and last.</p></details>
+      <details><summary>How soon can I use my shower?</summary><p>Leave new grout and silicone at least 24 hours before using the shower. If a job needs longer, your quote will say so.</p></details>
+      <details><summary>Do my tiles need sealing?</summary><p>Porcelain and glazed ceramic don't. Natural stone such as marble, travertine and limestone does, when it's laid and every one to two years after that.</p></details>
+      <details><summary>Does herringbone cost more?</summary><p>Yes, a little. Herringbone, chevron and diagonal patterns take more cuts and setting out, so laying costs around 20 to 30% more, and you'll need about 15% extra tiles instead of 10%.</p></details>
+    </div>
+  </div>
+</section>
+
+<section id="quote" class="band" aria-labelledby="quote-h">
+  <div class="wrap quote">
+    <div class="contact">
+      <p class="label">Free quote</p>
+      <h2 id="quote-h">Tell us about the job</h2>
+      <p class="lede">Homes, businesses and contracts, anywhere in the UK. Photos, rough sizes and the tile you've chosen help us give you an accurate price quickly.</p>
+      <dl>
+        <div><dt>Call or text</dt><dd><span class="fill">[Phone number]</span></dd></div>
+        <div><dt>Email</dt><dd><span class="fill">[Email address]</span></dd></div>
+        <div><dt>Tiler</dt><dd><span class="fill">[Name]</span>, AR Tiling</dd></div>
+        <div><dt>Working hours</dt><dd><span class="fill">[e.g. Mon to Sat, 8am to 6pm]</span></dd></div>
+      </dl>
+    </div>
+    <form class="qform" id="quote-form" novalidate>
+      <div class="hp" aria-hidden="true"><label for="q-web">Leave this empty</label><input id="q-web" name="website" tabindex="-1" autocomplete="off"></div>
+      <div class="row">
+        <div class="field"><label for="q-name">Your name <span class="req">(required)</span></label><input id="q-name" name="name" autocomplete="name" required></div>
+        <div class="field"><label for="q-phone">Phone <span class="req">(required)</span></label><input id="q-phone" name="phone" type="tel" autocomplete="tel" required></div>
+      </div>
+      <div class="row">
+        <div class="field"><label for="q-email">Email</label><input id="q-email" name="email" type="email" autocomplete="email"></div>
+        <div class="field"><label for="q-post">Postcode <span class="req">(required)</span></label><input id="q-post" name="postcode" autocomplete="postal-code" required></div>
+      </div>
+      <div class="row">
+        <div class="field">
+          <label for="q-type">Type of job</label>
+          <select id="q-type" name="job_type">
+            <option>Bathroom</option><option>Shower or wet room</option><option>Kitchen</option><option>Floor</option><option>Outdoor</option><option>Commercial</option><option>Contract or development</option><option>Repair or re-grout</option><option>Something else</option>
+          </select>
+        </div>
+        <div class="field"><label for="q-size">Rough size (m²)</label><input id="q-size" name="size_m2" type="number" inputmode="decimal" min="0" step="0.1"></div>
+      </div>
+      <div class="row">
+        <div class="field"><label for="q-tile">Tile you've chosen (optional)</label><input id="q-tile" name="tile" placeholder="Name, size or shop"></div>
+        <div class="field">
+          <label for="q-loyal">Have we worked for you before?</label>
+          <select id="q-loyal" name="loyalty"><option>No, this is my first job</option><option>Yes, I'm a loyal customer (10% off)</option><option>A friend recommended you (10% off)</option></select>
+        </div>
+      </div>
+      <div class="field"><label for="q-msg">About the job</label><textarea id="q-msg" name="message" placeholder="For example: full bathroom, walls floor to ceiling, old tiles to come off."></textarea></div>
+      <div class="field"><label for="q-photos">Photos (optional, up to 5)</label><input id="q-photos" name="photos" type="file" accept="image/*" multiple></div>
+      <button class="btn" type="submit">Send for a free quote</button>
+      <p class="sent" id="q-sent" role="status" aria-live="polite" hidden></p>
+    </form>
+  </div>
+</section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <div>
+      <a class="brand" href="#top"><svg class="mark" viewBox="0 0 56.56 36.77" aria-hidden="true" focusable="false"><g transform="translate(-3.72 -6.00)"><polygon fill="#ff5020" points="32.00,6.00 3.72,34.28 12.21,42.77 40.49,14.49"/><polygon fill="#ff9a3d" points="41.90,15.90 60.28,34.28 51.79,42.77 33.41,24.39"/><polygon fill="#c8300f" points="32.00,25.83 40.00,33.83 32.00,41.83 24.00,33.83"/></g></svg><span class="brand-txt"><b><span class="ar">AR</span> TILING</b><small>Tiling specialists</small></span></a>
+      <p style="margin-top:12px">Professional tiling team based in Greater Manchester, working UK-wide. Homes, commercial and contracts. No job too difficult.</p>
+    </div>
+    <div>
+      <h3>Services</h3>
+      <ul><li><a href="bathroom-tiling.html">Bathrooms</a></li><li><a href="wet-rooms-and-showers.html">Showers &amp; wet rooms</a></li><li><a href="kitchen-tiling.html">Kitchens</a></li><li><a href="floor-tiling.html">Floors</a></li><li><a href="outdoor-tiling.html">Outdoor</a></li><li><a href="commercial-tiling.html">Commercial &amp; contracts</a></li><li><a href="#loyalty">Loyal customers save 10%</a></li></ul>
+    </div>
+    <div>
+      <h3>Contact</h3>
+      <ul><li><span class="fill">[Phone number]</span></li><li><span class="fill">[Email address]</span></li><li>ar-tiling.com</li><li><a href="tile-shop.html">Tile shop</a></li><li><a href="guides.html">Guides</a></li><li><a href="#quote">Get a free quote</a></li><li><a href="privacy.html">Privacy notice</a></li><li><a href="terms.html">Terms of business</a></li><li><a href="aftercare.html">Caring for your tiles</a></li></ul>
+    </div>
+    <p class="base">© <span id="yr">2026</span> AR Tiling · ar-tiling.com</p>
+  </div>
+</footer>
+<div class="callbar" aria-label="Quick contact">
+  <a class="btn ghost" href="#quote">Call: <span class="fill">[Phone]</span></a>
+  <a class="btn" href="#quote">Free quote</a>
+</div>
+
+<script>
+(function () {
+  // Hero wall: a 6 × 5 grid of glazed tiles with a few lighter tiles, laid in order.
+  var wall = document.getElementById("wall");
+  var jitter = [0, 6, -4, 3, -6, 5, 2, -3, 4, -5, 1, 6, -2, 3, -6, 5, 0, -4, 6, -1, 3, -5, 2, 4, -3, 1, 5, -6, 2, -2];
+  for (var i = 0; i < 30; i++) {
+    var col = i % 6, row = Math.floor(i / 6);
+    var t = Math.max(0, Math.min(100, Math.round(((col + (4 - row)) / 9) * 100 + jitter[i])));
+    var s = document.createElement("span");
+    s.style.background = t < 50
+      ? "color-mix(in oklab, var(--glaze) " + (t * 2) + "%, var(--glaze-2))"
+      : "color-mix(in oklab, var(--glaze-3) " + ((t - 50) * 2) + "%, var(--glaze))";
+    s.style.animationDelay = (i * 0.025) + "s";
+    wall.appendChild(s);
+  }
+
+  // Patterns: each drawn as tiles outlined in grout colour, clipped to the frame.
+  var SVGNS = "http://www.w3.org/2000/svg", VW = 120, VH = 90;
+  var shades = ["var(--glaze)", "var(--glaze-2)", "var(--glaze-3)"];
+  function tile(svg, x, y, w, h, i, rot) {
+    var r = document.createElementNS(SVGNS, "rect");
+    r.setAttribute("x", x); r.setAttribute("y", y); r.setAttribute("width", w); r.setAttribute("height", h);
+    r.setAttribute("style", "fill:" + shades[Math.abs(i) % 3] + ";stroke:var(--grout);stroke-width:1.6");
+    (rot || svg).appendChild(r);
+  }
+  function poly(svg, pts, i) {
+    var p = document.createElementNS(SVGNS, "polygon");
+    p.setAttribute("points", pts.map(function (q) { return q.join(","); }).join(" "));
+    p.setAttribute("style", "fill:" + shades[Math.abs(i) % 3] + ";stroke:var(--grout);stroke-width:1.6");
+    svg.appendChild(p);
+  }
+  var drawers = {
+    straight: function (s) { var k = 0; for (var y = 0; y < VH; y += 22.5) for (var x = 0; x < VW; x += 30) tile(s, x, y, 30, 22.5, k++); },
+    brick: function (s) { var k = 0; for (var r = 0; r * 15 < VH; r++) for (var x = -(r % 2) * 20; x < VW; x += 40) tile(s, x, r * 15, 40, 15, k++); },
+    third: function (s) { var k = 0; for (var r = 0; r * 15 < VH; r++) for (var x = -((r % 3) * 40) / 3; x < VW; x += 40) tile(s, x, r * 15, 40, 15, k++); },
+    herringbone: function (s) { var W = 10, k = 0; for (var st = -12; st < 12; st++) for (var n = -14; n < 14; n++) { var ox = (st * 2 + n) * W, oy = (-st * 2 + n) * W; tile(s, ox, oy, 2 * W, W, k++); tile(s, ox, oy + W, W, 2 * W, k++); } },
+    chevron: function (s) { var cw = 20, h = 14, sl = 10, k = 0; for (var c = 0; c * cw < VW; c++) { var up = c % 2 === 0; for (var y = -h * 2; y < VH + h; y += h) { var x = c * cw; poly(s, up ? [[x, y + sl], [x + cw, y], [x + cw, y + h], [x, y + sl + h]] : [[x, y], [x + cw, y + sl], [x + cw, y + sl + h], [x, y + h]], k++); } } },
+    diagonal: function (s) { var g = document.createElementNS(SVGNS, "g"); g.setAttribute("transform", "rotate(45 60 45)"); s.appendChild(g); var k = 0; for (var y = -80; y < 170; y += 24) for (var x = -60; x < 180; x += 24) tile(s, x, y, 24, 24, k++, g); },
+    basket: function (s) { var B = 30, k = 0; for (var by = 0; by < VH; by += B) for (var bx = 0; bx < VW; bx += B) { if (((bx + by) / B) % 2 === 0) { tile(s, bx, by, B, B / 2, k++); tile(s, bx, by + B / 2, B, B / 2, k++); } else { tile(s, bx, by, B / 2, B, k++); tile(s, bx + B / 2, by, B / 2, B, k++); } } },
+    vertical: function (s) { var k = 0; for (var y = 0; y < VH; y += 45) for (var x = 0; x < VW; x += 15) tile(s, x, y, 15, 45, k++); }
+  };
+  var patterns = [
+    ["straight", "Straight lay", "Square to the walls", "Clean and simple, the least waste. Suits almost any tile."],
+    ["brick", "Brick bond", "Half offset", "Each row moves half a tile. The classic metro look."],
+    ["third", "Third offset", "Best for long tiles", "Rows move a third of a tile, which hides the slight bow in large tiles."],
+    ["herringbone", "Herringbone", "+15% tiles", "Zig-zag of tiles at right angles. Timeless with wood-effect or metro."],
+    ["chevron", "Chevron", "Angled-cut tiles", "A sharp V pattern made with tiles cut at an angle."],
+    ["diagonal", "Diagonal", "Set at 45°", "Makes small rooms look wider, with more cuts at the edges."],
+    ["basket", "Basketweave", "Pairs at right angles", "Pairs of tiles woven across the floor. Great in hallways."],
+    ["vertical", "Vertical stack", "Tall and narrow", "Long tiles stood upright to make a ceiling feel higher."]
+  ];
+  var pg = document.getElementById("patterns-grid");
+  patterns.forEach(function (p) {
+    var fig = document.createElement("figure"); fig.className = "pattern"; fig.style.margin = "0";
+    var svg = document.createElementNS(SVGNS, "svg"); svg.setAttribute("viewBox", "0 0 " + VW + " " + VH); svg.setAttribute("role", "img"); svg.setAttribute("aria-label", p[1] + " tile pattern");
+    drawers[p[0]](svg);
+    var cap = document.createElement("figcaption"); cap.style.display = "grid"; cap.style.gap = "4px";
+    cap.innerHTML = '<span class="tag"></span><h3></h3><p></p>';
+    cap.querySelector(".tag").textContent = p[2]; cap.querySelector("h3").textContent = p[1]; cap.querySelector("p").textContent = p[3];
+    fig.appendChild(svg); fig.appendChild(cap); pg.appendChild(fig);
+  });
+
+  // Tile and budget calculator. Guide prices per m²: [tiles low, tiles high, labour low, labour high].
+  var PRICES = { ceramic: [10, 50, 25, 40], porcelain: [20, 90, 25, 45], large: [35, 150, 35, 55], mosaic: [20, 150, 40, 70], stone: [30, 100, 40, 65], marble: [60, 200, 40, 65] };
+  var SUNDRIES = [10, 20]; // adhesive, grout and trims per m²
+  function tilesNeeded(widthM, lengthM, tileMm, extra) {
+    var area = widthM * lengthM;
+    var parts = tileMm.split("x");
+    var tileArea = (Number(parts[0]) / 1000) * (Number(parts[1]) / 1000);
+    var withExtra = area * (1 + extra);
+    return { area: area, withExtra: withExtra, tiles: area > 0 ? Math.ceil(withExtra / tileArea) : 0 };
+  }
+  function budget(area, withExtra, type, patterned, loyal) {
+    var p = PRICES[type], lab = patterned ? 1.25 : 1, off = loyal ? 0.9 : 1;
+    var tiles = [withExtra * p[0], withExtra * p[1]];
+    var sundries = [area * SUNDRIES[0] * off, area * SUNDRIES[1] * off];
+    var labour = [area * p[2] * lab * off, area * p[3] * lab * off];
+    var saving = loyal ? [(sundries[0] + labour[0]) / 9, (sundries[1] + labour[1]) / 9] : [0, 0];
+    return { tiles: tiles, sundries: sundries, labour: labour, saving: saving, total: [tiles[0] + sundries[0] + labour[0], tiles[1] + sundries[1] + labour[1]] };
+  }
+  function money(n) { return "£" + (Math.round(n / 10) * 10).toLocaleString("en-GB"); }
+  function range(r) { return money(r[0]) + "–" + money(r[1]); }
+  var w = document.getElementById("c-w"), l = document.getElementById("c-l"), t = document.getElementById("c-tile"), lay = document.getElementById("c-lay"), ty = document.getElementById("c-type"), loyal = document.getElementById("c-loyal");
+  var shopList = "";
+  function update() {
+    var r = tilesNeeded(Math.max(0, parseFloat(w.value) || 0), Math.max(0, parseFloat(l.value) || 0), t.value, parseFloat(lay.value));
+    var b = budget(r.area, r.withExtra, ty.value, lay.value === "0.15", loyal.checked);
+    var save = document.getElementById("r-save");
+    save.hidden = !loyal.checked || r.area <= 0;
+    save.textContent = "Loyalty saving: " + range(b.saving);
+    shopList = "Tile shop list (AR Tiling calculator)\n" +
+      "Tile: " + ty.options[ty.selectedIndex].text + ", " + t.options[t.selectedIndex].text + "\n" +
+      "Area: " + r.area.toFixed(2) + " m², buy " + r.withExtra.toFixed(2) + " m² including extra (" + r.tiles + " tiles)\n" +
+      "Pattern: " + lay.options[lay.selectedIndex].text + "\n" +
+      "Check every box: same shade and batch number\n" +
+      "Check the label: wall or floor rated, PEI wear rating, R slip rating\n" +
+      "Also: matching grout and trims, and one spare box for repairs";
+    document.getElementById("r-area").textContent = r.area.toFixed(2) + " m²";
+    document.getElementById("r-tiles").textContent = r.tiles + (r.tiles === 1 ? " tile" : " tiles");
+    document.getElementById("r-m2").textContent = r.withExtra.toFixed(2) + " m²";
+    document.getElementById("r-budget").textContent = r.area > 0 ? range(b.total) : "£0";
+    document.getElementById("r-split").textContent = "Tiles " + range(b.tiles) + " · adhesive and grout " + range(b.sundries) + " · labour " + range(b.labour);
+  }
+  [w, l, t, lay, ty, loyal].forEach(function (el) { el.addEventListener("input", update); el.addEventListener("change", update); });
+  var copyBtn = document.getElementById("copy-list");
+  copyBtn.addEventListener("click", function () {
+    function done(msg) { copyBtn.textContent = msg; setTimeout(function () { copyBtn.textContent = "Copy my tile shop list"; }, 2500); }
+    try {
+      navigator.clipboard.writeText(shopList).then(function () { done("Copied: paste it into a note"); }, function () { done("Couldn't copy: write the figures down"); });
+    } catch (e) { done("Couldn't copy: write the figures down"); }
+  });
+  document.getElementById("calc-form").addEventListener("submit", function (e) { e.preventDefault(); });
+  update();
+
+  // Quote form. Put the business email in SEND_TO and the form opens the customer's
+  // email app with everything filled in. Add a FORM_ENDPOINT from Formspree or
+  // Web3Forms (free) to send straight from the page, photos included.
+  var SEND_TO = "";       // e.g. "info@ar-tiling.com"
+  var FORM_ENDPOINT = ""; // e.g. "https://formspree.io/f/abcdwxyz"
+  var qform = document.getElementById("quote-form");
+  var qsent = document.getElementById("q-sent");
+  function say(msg, bad) {
+    qsent.innerHTML = msg;
+    qsent.className = bad ? "sent bad" : "sent";
+    qsent.hidden = false;
+  }
+  qform.addEventListener("submit", function (e) {
+    e.preventDefault();
+    var bad = [];
+    ["q-name", "q-phone", "q-post", "q-email"].forEach(function (id) {
+      var el = document.getElementById(id), v = el.value.trim();
+      var ok = id === "q-email" ? (!v || /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(v)) : v.length > 0;
+      if (ok) el.removeAttribute("aria-invalid"); else { el.setAttribute("aria-invalid", "true"); bad.push(el); }
+    });
+    var photos = document.getElementById("q-photos").files;
+    if (bad.length) {
+      var missing = bad.filter(function (el) { return el.id !== "q-email"; }).map(function (el) { return { "q-name": "your name", "q-phone": "your phone number", "q-post": "your postcode" }[el.id]; });
+      var emailBad = bad.some(function (el) { return el.id === "q-email"; });
+      say((missing.length ? "Please add " + missing.join(", ").replace(/, ([^,]*)$/, " and $1") + "." : "") + (emailBad ? (missing.length ? " " : "") + "Please check your email address." : ""), true);
+      bad[0].focus();
+      return;
+    }
+    if (photos.length > 5) { say("Please choose up to 5 photos.", true); return; }
+    if (qform.website.value) { qform.reset(); say("Thanks, we've got your details."); return; }
+
+    var f = function (id) { return document.getElementById(id).value.trim(); };
+    var summary = "Name: " + f("q-name") + "\nPhone: " + f("q-phone") + "\nEmail: " + f("q-email") +
+      "\nPostcode: " + f("q-post") + "\nType of job: " + f("q-type") + "\nRough size: " + (f("q-size") ? f("q-size") + " m2" : "not given") +
+      "\nTile chosen: " + (f("q-tile") || "not yet") + "\nWorked with us before: " + f("q-loyal") + "\n\nAbout the job:\n" + f("q-msg");
+    var subject = "Quote request: " + f("q-type") + ", " + f("q-post").toUpperCase();
+    var mailto = SEND_TO ? "mailto:" + SEND_TO + "?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(summary + (photos.length ? "\n\n(I'll attach my photos to this email.)" : "")) : "";
+
+    if (FORM_ENDPOINT) {
+      var data = new FormData(qform);
+      data.append("subject", subject);
+      var btn = qform.querySelector('button[type="submit"]');
+      btn.disabled = true;
+      say("Sending...");
+      fetch(FORM_ENDPOINT, { method: "POST", body: data, headers: { Accept: "application/json" } })
+        .then(function (r) { if (!r.ok) throw new Error(r.status); qform.reset(); say("Thanks, your request has been sent. We'll be in touch within one working day."); })
+        .catch(function () { say("Sorry, that didn't send." + (mailto ? ' Please <a href="' + mailto + '">email us your details</a> instead.' : " Please try again in a minute."), true); })
+        .then(function () { btn.disabled = false; });
+    } else if (mailto) {
+      window.location.href = mailto;
+      say("Your email app should now open with your details filled in." + (photos.length ? " Attach your photos, then press send." : " Just press send.") +
+        ' Nothing opened? Email us at <a href="mailto:' + SEND_TO + '">' + SEND_TO + "</a>.");
+    } else {
+      say("This is a preview of the site, so nothing has been sent. When the site goes live, this form will send straight to AR Tiling.");
+    }
+  });
+
+  // Close the phone menu after choosing a link.
+  document.querySelectorAll(".menu nav a").forEach(function (a) {
+    a.addEventListener("click", function () { a.closest("details").open = false; });
+  });
+
+  document.getElementById("yr").textContent = new Date().getFullYear();
+})();
+</script>
+
+</body></html>
